@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /* Pixelated text font for body */
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    background-color: #5c94fc; /* Mario Sky Blue */
+    /* Ground effect */
+    background-image: linear-gradient(to bottom, transparent 90%, #c84c0c 90%, #c84c0c 95%, #000 95%, #000 100%);
+    background-attachment: fixed;
+    font-family: 'VT323', monospace; 
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+/* Sidebar Pipe Style */
+#pipe-container {
+    width: 260px;
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.pipe-collar {
+    width: calc(100% + 24px);
+    height: 40px;
+    margin-left: -12px;
+    background-color: #00a800;
+    background-image: linear-gradient(to right, #00a800 10%, #5ce430 30%, #00a800 60%, #005800 90%);
+    border: 6px solid #000;
+    border-bottom: 0;
+    z-index: 11;
+    position: relative;
+}
+
+#sidebar {
+    width: 100%;
+    background-color: #00a800;
+    background-image: linear-gradient(to right, #00a800 10%, #5ce430 30%, #00a800 60%, #005800 90%);
+    border: 6px solid #000;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+    font-family: 'Press Start 2P', cursive;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Nuvens do Mario */
+.cloud { background: #fff; border-radius: 50px; height: 40px; width: 120px; position: fixed; z-index: 1; animation: drift 60s linear infinite; }
+.cloud::before, .cloud::after { content: ''; background: #fff; position: absolute; border-radius: 50%; }
+.cloud::before { width: 60px; height: 60px; top: -30px; left: 15px; }
+.cloud::after { width: 40px; height: 40px; top: -15px; right: 15px; }
+.cloud1 { top: 10%; left: -150px; animation-duration: 45s; }
+.cloud2 { top: 30%; left: -150px; animation-duration: 70s; animation-delay: -20s; }
+.cloud3 { top: 15%; left: -150px; animation-duration: 55s; animation-delay: -40s; }
+@keyframes drift { 0% { transform: translateX(0vw); } 100% { transform: translateX(120vw); } }
+
+/* Chão de Tijolinhos */
+.ground {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 64px; z-index: 5;
+    background-color: #c84c0c;
+    background-image: 
+        linear-gradient(90deg, rgba(0,0,0,0.5) 2px, transparent 2px),
+        linear-gradient(rgba(0,0,0,0.5) 2px, transparent 2px);
+    background-size: 32px 16px;
+    border-top: 4px solid #000;
+}
+.ground::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.5) 2px, transparent 2px);
+    background-size: 32px 32px; background-position: 16px 16px;
+}
+
+#sidebar::-webkit-scrollbar { width: 12px; }
+#sidebar::-webkit-scrollbar-track { background: #008000; border-left: 2px solid #000; }
+#sidebar::-webkit-scrollbar-thumb { background: #5c94fc; border: 2px solid #000; }
+
+.sidebar-content { padding: 15px; }
+
+#sidebar h3 { font-size: 10pt; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 0 #000; text-align: center; line-height: 1.4; border-bottom: 4px dashed #000; padding-bottom: 10px; }
+#sidebar ul { list-style: none; }
+#sidebar li { margin-bottom: 15px; }
+#sidebar a { color: #f8d820; text-shadow: 1px 1px 0 #000; text-decoration: none; font-size: 8pt; line-height: 1.5; transition: color 0.2s, padding-left 0.2s; display: block; }
+#sidebar a:hover { color: #fff; padding-left: 5px; }
+
+/* Main area */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
+    width: 100%;
+}
+
+/* Página -> Sombra e borda escura */
+.page {
+    background-image: url('bricks.avif');
+    background-repeat: repeat;
+    background-size: 120px; /* Tamanho ajustado para pixel-art dos tijolinhos */
+    width: 100%;
+    max-width: 21cm;
+    min-height: 29.7cm;
+    padding: 1cm;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+}
+
+/* Miolo do livro (Question Block Style) */
+.retro-box {
+    background-color: #fccb28; /* Amarelo da paleta */
+    border: 8px solid #000;
+    box-shadow: inset -5px -5px 0px rgba(0,0,0,0.2), inset 5px 5px 0px rgba(255,255,255,0.5);
+    padding: 1.5cm 2cm;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Capa (primeira página) */
+.page.cover { 
+    justify-content: space-between; 
+    align-items: center; 
+    background-image: url('cover-map.png');
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    padding: 3cm 1cm;
+}
+
+/* Contracapa (última página) - usa tijolinhos */
+.page.endcover {
+    justify-content: center;
+    align-items: center;
+    /* herda background-image dos tijolinhos do .page */
+}
+
+.cover-box { 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    background-color: transparent; 
+    border: none; 
+    box-shadow: none; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+/* Logo Title Style */
+.mario-logo {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.super-text {
+    font-size: 56px;
+    color: #f85800; /* Laranja-Vermelho */
+    -webkit-text-stroke: 4px #000;
+    text-shadow: 8px 8px 0 #000;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.ia-world-text {
+    font-size: 80px;
+    -webkit-text-stroke: 4px #000;
+    text-shadow: 8px 8px 0 #000;
+    letter-spacing: 0px;
+    position: relative;
+    z-index: 1;
+}
+
+.m-green { color: #00cc00; }
+.m-blue { color: #00ddff; }
+.m-yellow { color: #fccb28; }
+.m-orange { color: #f89800; }
+.m-red { color: #ff3838; }
+
+h1, h2 {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    line-height: 1.6;
+}
+
+h1 { font-size: 28pt; text-align: center; color: #ff3838; -webkit-text-stroke: 2px #000; text-shadow: 6px 6px 0px #000; animation: bounce 2s ease-in-out infinite; margin-bottom: 0.5cm;}
+.subtitle { font-family: 'Press Start 2P', cursive; font-size: 10pt; color: #000; text-shadow: 1px 1px 0px #fff; margin-bottom: 2cm; text-align: center;}
+.author { font-family: 'Press Start 2P', cursive; font-size: 9pt; color: #fff; background-color: #00cc00; padding: 10px; border: 4px solid #000; box-shadow: 4px 4px 0 #000; }
+
+h2 { font-size: 14pt; color: #000; margin-bottom: 1cm; text-align: center; border-bottom: 4px solid #000; padding-bottom: 15px; }
+
+/* Tipografia de Livro */
+p { text-align: justify; line-height: 1.4; font-size: 20pt; margin-bottom: 0.8cm; color: #000; }
+
+/* Letra Capitular (Drop Cap) */
+h2 + p::first-letter {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40pt;
+    float: left;
+    margin-right: 12px;
+    line-height: 1;
+    color: #ff3838;
+    text-shadow: 3px 3px 0px #000;
+}
+
+.highlight { background-color: #00cc00; color: #fff; padding: 2px 8px; border: 2px solid #000; font-weight: bold; font-size: 18pt; box-shadow: 2px 2px 0px #000; }
+
+.book-index { list-style: none; margin-top: 1cm; padding-left: 0; font-family: 'Press Start 2P', cursive; }
+.book-index li { margin-bottom: 20px; font-size: 10pt; border-bottom: 4px dashed #000; padding-bottom: 15px; text-align: center; line-height: 1.6;}
+.book-index a { color: #000; text-decoration: none; }
+.book-index a:hover { color: #ff3838; }
+
+/* === Temas por Capítulo === */
+
+/* Mundo 1-1 — Verde Suave */
+.theme-green .retro-box { background-color: #d4f5d4; }
+.theme-green .retro-box h2 { color: #007a00; border-bottom-color: #00cc00; }
+.theme-green h2 + p::first-letter { color: #00cc00; }
+.theme-green .highlight { background-color: #00cc00; color: #fff; }
+
+/* Mundo 1-2 — Azul Suave */
+.theme-blue .retro-box { background-color: #d0f4ff; }
+.theme-blue .retro-box h2 { color: #007a99; border-bottom-color: #00ddff; }
+.theme-blue h2 + p::first-letter { color: #00aacc; }
+.theme-blue .highlight { background-color: #00ddff; color: #000; }
+
+/* Mundo 1-3 — Amarelo Suave (padrão) */
+.theme-yellow .retro-box { background-color: #fff4cc; }
+.theme-yellow .retro-box h2 { color: #8a6d00; border-bottom-color: #fccb28; }
+.theme-yellow h2 + p::first-letter { color: #cc9900; }
+
+/* Mundo 1-4 — Vermelho Suave */
+.theme-red .retro-box { background-color: #ffd6d6; }
+.theme-red .retro-box h2 { color: #a30000; border-bottom-color: #ff3838; }
+.theme-red h2 + p::first-letter { color: #ff3838; }
+.theme-red .highlight { background-color: #ff3838; color: #fff; }
+
+/* Fase do Chefão — Escuro com acentos */
+.boss-box { background-color: #2a2a2a; color: #fff; border-color: #ff3838; }
+.boss-box h2 { color: #ff3838; border-bottom-color: #ff3838; }
+.boss-box p { color: #eee; }
+.boss-box h2 + p::first-letter { color: #fccb28; text-shadow: 3px 3px 0px #000; }
+.boss-box .highlight { background-color: #fccb28; color: #000; }
+
+.footer-page {
+    position: absolute;
+    bottom: 2.5cm;
+    right: 2.5cm;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12pt;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 1100px) {
+    body { flex-direction: column; align-items: center; justify-content: flex-start; }
+    #pipe-container { width: 90%; max-width: 21cm; position: static; transform: none; margin-top: 20px; }
+    .pipe-collar { display: none; }
+    #sidebar { max-height: none; }
+    .page { padding: 0.5cm; min-height: auto; height: auto; box-shadow: 5px 5px 0px rgba(0,0,0,0.5); }
+    .retro-box { padding: 1cm; }
+    h1 { font-size: 20pt; animation: none; }
+    h2 { font-size: 12pt; }
+    p { font-size: 16pt; }
+    h2 + p::first-letter { font-size: 28pt; }
+    .book-index li { font-size: 8pt; }
+}
+
+/* Regras de Impressão — Ctrl+P → Salvar como PDF */
+@media print {
+    @page { 
+        size: A4; 
+        margin: 0; 
+    }
+
+    /* Esconde elementos decorativos do tema */
+    #pipe-container, .cloud, .ground { 
+        display: none !important; 
+    }
+
+    /* Reset do body */
+    body { 
+        background: white !important; 
+        padding: 0; 
+        margin: 0;
+        display: block; 
+    }
+
+    /* Main sem gaps */
+    main { 
+        padding: 0; 
+        gap: 0; 
+        display: block; 
+    }
+
+    /* Cada .page = exatamente 1 folha A4 */
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 1cm;
+        box-shadow: none !important;
+        /* Mantém os tijolinhos no PDF */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Retro-box ocupa a folha com padding interno */
+    .retro-box {
+        animation: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 2cm 2.5cm !important;
+        flex-grow: 1;
+    }
+
+    /* Preserva cores suaves dos capítulos no PDF */
+    .theme-green .retro-box { background-color: #e8f8e8 !important; }
+    .theme-blue .retro-box { background-color: #e4f6fb !important; }
+    .theme-yellow .retro-box { background-color: #fff8e0 !important; }
+    .theme-red .retro-box { background-color: #fde8e8 !important; }
+
+    /* Boss box → fundo claro para impressão */
+    .boss-box { 
+        background-color: #f0f0f0 !important; 
+        color: #000 !important;
+    }
+    .boss-box h2 { color: #333 !important; border-bottom-color: #333 !important; }
+    .boss-box p { color: #000 !important; }
+    .boss-box ul { color: #000 !important; }
+
+    /* Capa — mantém imagem */
+    .page.cover {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    .cover-box { 
+        border: none !important; 
+        box-shadow: none !important; 
+    }
+
+    /* Tipografia da capa para impressão */
+    .mario-logo { animation: none !important; }
+    .super-text {
+        color: #333 !important;
+        -webkit-text-stroke: 2px #000 !important;
+        text-shadow: 4px 4px 0 #ccc !important;
+    }
+    .ia-world-text {
+        -webkit-text-stroke: 2px #000 !important;
+        text-shadow: 4px 4px 0 #ccc !important;
+    }
+    .subtitle { 
+        color: #fff !important; 
+        text-shadow: 3px 3px 0 #000 !important; 
+        animation: none !important; 
+    }
+    .author { 
+        color: #000 !important; 
+        text-shadow: none !important;
+        background-color: #eee !important;
+        border-color: #000 !important;
+        box-shadow: none !important;
+    }
+
+    /* Títulos e texto */
+    h1 { 
+        animation: none !important; 
+        text-shadow: none !important; 
+    }
+    h2 { color: #000 !important; border-bottom-color: #333 !important; }
+
+    /* Highlights legíveis na impressão */
+    .highlight { 
+        box-shadow: none !important; 
+        background: #e0e0e0 !important; 
+        color: #000 !important; 
+        border-color: #666 !important;
+    }
+
+    /* Rodapé de página */
+    .footer-page { 
+        color: #333 !important; 
+        text-shadow: none !important; 
+        bottom: 1.5cm !important;
+    }
+
+    /* Links */
+    .book-index a { color: #000 !important; }
+
+    /* Listas */
+    ul { color: #000 !important; }
+}

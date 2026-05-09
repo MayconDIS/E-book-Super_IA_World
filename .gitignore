@@ -1,0 +1,16 @@
+# Arquivos gerados
+*.pdf
+LinkedIn_Tutorial.pdf
+Super_IA_World_Ebook.pdf
+Super IA World - E-book.pdf
+
+# Pastas de exemplo
+example/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
