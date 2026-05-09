@@ -1,0 +1,13 @@
+{
+  "project_name": "Super IA World - E-book",
+  "gsd_version": "1.0",
+  "workflow": {
+    "auto_commit": true,
+    "require_uat": true,
+    "branch_strategy": "main"
+  },
+  "preferences": {
+    "language": "pt-BR",
+    "style": "pixel-art-16bit"
+  }
+}
