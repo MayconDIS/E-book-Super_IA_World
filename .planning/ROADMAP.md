@@ -9,7 +9,7 @@
 ## Marco 2: Promoção e Lançamento (Em andamento)
 - [x] Fase 5: Criação do Tutorial LinkedIn
 - [ ] Fase 6: Deploy Automático (GitHub Pages)
-- [ ] Fase 7: Auditoria de UAT Final
+- [x] Fase 7: Auditoria de UAT Final
 
 ## Marco 3: Expansão e Feedback
 - [ ] Fase 8: Coleta de Feedback de Usuários
