@@ -127,7 +127,7 @@ main {
 .page.cover { 
     justify-content: space-between; 
     align-items: center; 
-    background-image: url('../img/cover-map.png');
+    background-image: url('../img/capa.png');
     background-size: cover;
     background-position: center;
     image-rendering: pixelated;
@@ -151,6 +151,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
 }
 
 @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
@@ -219,6 +220,27 @@ h2 + p::first-letter {
 
 .book-index { list-style: none; margin-top: 1cm; padding-left: 0; font-family: 'Press Start 2P', cursive; }
 .book-index li { margin-bottom: 20px; font-size: 10pt; border-bottom: 4px dashed #000; padding-bottom: 15px; text-align: center; line-height: 1.6;}
+.theme-green .book-index li { font-size: 15pt !important; text-align: center; }
+.theme-green .book-index li br + span, 
+.theme-green .book-index li br { vertical-align: baseline; } /* Setup for target */
+.theme-green .book-index li { 
+    font-size: 15pt !important; 
+    text-align: center; 
+}
+.theme-green .book-index li {
+    display: block;
+}
+.theme-green .book-index li br {
+    display: block;
+    content: "";
+}
+/* Target text after <br> */
+.theme-green .book-index li {
+    font-size: 15pt !important;
+}
+/* We need a way to target the text after <br> since it's not in a tag */
+/* I will use a different approach: I will wrap the description in a span in HTML */
+
 .book-index a { color: #000; text-decoration: none; }
 .book-index a:hover { color: #ff3838; }
 
