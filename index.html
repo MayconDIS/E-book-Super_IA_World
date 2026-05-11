@@ -23,29 +23,34 @@
     <title>Super IA World - E-book | Curiosidades da IA</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cenario.css">
     <link rel="icon" type="image/png" href="assets/img/icon-star.png">
 </head>
 <body>
 
-    <!-- ==========================================
-         DECORATIVE WORLD ELEMENTS 
-         ========================================== -->
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-    <div class="ground"></div>
+    <!-- Cenário de Fundo com Assets Reais em Camadas -->
+    <div class="world-bg">
+        <img src="assets/figures/nuvem.png" class="bg-cloud" style="top: 10%; left: -200px; width: 120px; animation-delay: 0s;">
+        <img src="assets/figures/nuvem.png" class="bg-cloud" style="top: 25%; left: -200px; width: 100px; animation-delay: 10s;">
+        <img src="assets/figures/nuvem.png" class="bg-cloud" style="top: 50%; left: -200px; width: 140px; animation-delay: 18s;">
+        
+        <img src="assets/figures/bloco-interrogacao.png" class="bg-deco bg-block-1" alt="Bloco ?">
+        <img src="assets/figures/bloco-interrogacao.png" class="bg-deco bg-block-2" alt="Bloco ?">
+        <img src="assets/figures/bloco-interrogacao.png" class="bg-deco bg-block-3" alt="Bloco ?">
+        
+        <img src="assets/figures/bloco-tijolo.png" class="bg-deco bg-brick-1" alt="Tijolinho">
+        <img src="assets/figures/bloco-tijolo.png" class="bg-deco bg-brick-2" alt="Tijolinho">
+        
+        <img src="assets/figures/toad.png" class="bg-deco bg-toad" alt="Toad">
+        <img src="assets/figures/yoshi.png" class="bg-deco bg-yoshi" alt="Yoshi">
+        <img src="assets/figures/flor-fogo.png" class="bg-deco bg-flower-fire" alt="Flor de Fogo">
+        <img src="assets/figures/flor-gelo.png" class="bg-deco bg-flower-ice" alt="Flor de Gelo">
+        <img src="assets/figures/bullet-bill.png" class="bg-deco bg-bullet" alt="Bullet Bill">
+        <img src="assets/figures/bullet-bill.png" class="bg-deco bg-bullet-2" alt="Bullet Bill">
+    </div>
 
-    <nav id="pipe-container" role="navigation" aria-label="Sumário">
-        <div class="pipe-collar"></div>
-        <div id="sidebar">
-            <div class="sidebar-content">
-                <h3>&#9776; MAPA DO MUNDO</h3>
-                <ul id="toc-list">
-                    <!-- Gerado via JS -->
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="ground-real"></div>
+
 
     <!-- ==========================================
          MAIN E-BOOK CONTENT
@@ -54,12 +59,13 @@
         <!-- CAPA -->
         <article class="page cover" aria-labelledby="title-1">
             <div class="retro-box cover-box">
+                <!-- Bloco de frases com tamanho reduzido para equilíbrio -->
                 <div style="position: absolute; top: 29%; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 20px; width: auto; white-space: nowrap;">
-                    <p class="subtitle" style="color: #fff; text-shadow: 4px 4px 0 #000; font-size: 20px; animation: blink 1.5s step-end infinite; margin: 0;">► O CONHECIMENTO LIBERTA</p>
-                    <div class="author" style="background: rgba(0,0,0,0.8); padding: 10px 20px; border: 2px solid #fff; border-radius: 8px; color: #fff; text-shadow: 2px 2px 0 #000; font-size: 14px;">PLAYER: Entusiasta de Tecnologia</div>
+                    <p class="subtitle" style="color: #fff; text-shadow: 4px 4px 0 #000; font-size: 20px; animation: blink 1.5s step-end infinite; margin: 0; font-family: 'Press Start 2P', cursive;">► O CONHECIMENTO LIBERTA</p>
+                    <div class="author" style="background: rgba(0,0,0,0.8); padding: 8px 20px; border: 2px solid #fff; border-radius: 8px; color: #fff; text-shadow: 2px 2px 0 #000; font-size: 18px; font-family: 'VT323', monospace;">PLAYER: Entusiasta de Tecnologia</div>
                 </div>
-                <div style="position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;">
-                    <div class="author" style="background: rgba(0,0,0,0.8); padding: 10px 20px; border: 2px solid #fff; border-radius: 8px; color: #fff; text-shadow: 2px 2px 0 #000; font-size: 14px;">Autor: Maycon Douglas</div>
+                <div style="position: absolute; bottom: 3%; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;">
+                    <div class="author" style="background: rgba(0,0,0,0.8); padding: 8px 20px; border: 2px solid #fff; border-radius: 8px; color: #fff; text-shadow: 2px 2px 0 #000; font-size: 16px; font-family: 'VT323', monospace;">Autor: Maycon Douglas</div>
                 </div>
             </div>
         </article>
@@ -85,16 +91,20 @@
         <article class="page theme-data" aria-labelledby="chapter-1">
             <div class="retro-box">
                 <h2 id="chapter-1">Mundo 1-1: O Apetite por Dados</h2>
-                <p>Você sabia que o <strong>GPT-5.5</strong> da OpenAI leu mais textos do que todos os seres humanos que já existiram — combinados? Antes de responder uma única pergunta, ele devorou <span class="highlight">trilhões de palavras</span> da internet.</p>
-                <p>Para criar IAs como o <strong>GPT-5.5</strong>, o <strong>Gemini 3.1 Pro</strong> ou o <strong>Claude Opus 4.7</strong>, as empresas primeiro precisam alimentá-las. O cardápio inclui:</p>
-                <ul style="font-family: 'VT323', monospace; font-size: 18pt; margin-bottom: 0.8cm; padding-left: 1.5cm;">
-                    <li>📚 <strong>Livros inteiros</strong> em domínio público</li>
-                    <li>💬 <strong>Bilhões de posts</strong> do Reddit e fóruns</li>
-                    <li>📖 <strong>Toda a Wikipédia</strong> em dezenas de idiomas</li>
-                    <li>💻 <strong>Repositórios de código</strong> do GitHub</li>
-                </ul>
-                <p>Mas aqui está o problema: <strong>os dados acabaram</strong>. As empresas já consumiram quase todo texto público de qualidade do planeta. A solução? IAs agora geram <span class="highlight">dados sintéticos</span> para treinar novas IAs. A máquina se alimenta da própria criação.</p>
-                <p>Se os dados são o combustível, <strong>quem controla a qualidade desse combustível?</strong> A resposta está na próxima fase...</p>
+                <p>Você sabia que o <strong>GPT-5.5</strong> da OpenAI leu mais textos do que todos os seres humanos que já existiram — combinados? Ele devorou <span class="highlight">15+ trilhões de tokens</span>. Mas o segredo não é apenas o volume, são as <strong>Leis de Escala (Scaling Laws)</strong>: quanto mais poder de computação e dados de qualidade, mais "inteligência" emerge.</p>
+                
+                <div class="q-block">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>CURIOSIDADE:</strong> Os modelos agora usam <em>"Curated Data"</em>. Em vez de lerem toda a internet (incluindo lixo digital), eles focam em raciocínio lógico, livros técnicos e código de alta qualidade.</p>
+                </div>
+
+                <p>Mas aqui está o desafio de 2026: <strong>os dados públicos acabaram</strong>. A solução? IAs agora geram <span class="highlight">dados sintéticos</span> — textos de altíssimo nível criados por modelos menores para treinar os gigantes. É o ciclo da auto-evolução.</p>
+                
+                <div class="powerup-block" style="background-color: #2ecc71; border-color: #000;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>ITEM SECRETO: Model Collapse</strong> — Se uma IA for treinada apenas com dados de outras IAs, ela começa a esquecer fatos raros e a cometer erros bizarros. O toque humano ainda é o "filtro de realidade" indispensável.</p>
+                </div>
+
+                <p>Se os dados são o combustível, como garantimos que a IA não aprenda comportamentos tóxicos? A resposta está no toque humano...</p>
+                <div class="fonte-box">Fonte: OpenAI & Google DeepMind (Data Trends 2025-2026).</div>
             </div>
             <span class="footer-page">01</span>
         </article>
@@ -103,15 +113,20 @@
         <article class="page theme-human" aria-labelledby="chapter-2">
             <div class="retro-box">
                 <h2 id="chapter-2">Mundo 1-2: O Fator Humano</h2>
-                <p>Lembra daquele teste chato pedindo para você clicar em semáforos? Parabéns: você <strong>trabalhou de graça</strong> para o Google. Cada clique seu treinou uma IA de <span class="highlight">visão computacional</span> a enxergar o mundo real.</p>
-                <p>Hoje, o método evoluiu. Para ensinar IAs de texto, existe o <span class="highlight">RLHF</span> — Aprendizado por Reforço com Feedback Humano. Funciona assim:</p>
-                <ul style="font-family: 'VT323', monospace; font-size: 18pt; margin-bottom: 0.8cm; padding-left: 1.5cm;">
-                    <li>🧪 A IA gera <strong>duas respostas</strong> diferentes</li>
-                    <li>👤 Um humano escolhe <strong>qual é a melhor</strong></li>
-                    <li>🎯 A IA aprende e ajusta seus <strong>bilhões de pesos</strong></li>
-                </ul>
-                <p>A <strong>Anthropic</strong> foi além. O <strong>Claude Opus 4.7</strong> (2026) usa <span class="highlight">IA Constitucional</span> — regras éticas fixas inspiradas na Declaração de Direitos Humanos. A própria IA se avalia e se corrige. Hoje, essa técnica é padrão da indústria.</p>
-                <p>Mas espere: se a IA lê texto e recebe feedback humano, <strong>como exatamente o cérebro dela processa tudo isso?</strong> O segredo está no motor que revolucionou a indústria...</p>
+                <p>Cada clique seu em um "CAPTCHA" treinou uma IA. Mas para modelos de linguagem, o processo é o <strong>RLHF</strong> (Aprendizado por Reforço com Feedback Humano). Humanos classificam respostas, ensinando à máquina o que é útil, honesto e inofensivo.</p>
+                
+                <div class="powerup-block">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>POWER-UP: DPO</strong> — Em 2026, o <em>Direct Preference Optimization</em> substituiu o RLHF complexo, permitindo que a IA aprenda preferências humanas diretamente matematicamente, sem precisar de um "modelo de recompensa" separado.</p>
+                </div>
+
+                <p>A <strong>Anthropic</strong> elevou o nível com a <span class="highlight">IA Constitucional</span>. O Claude Opus 4.7 segue uma lista de princípios (uma "Constituição") para se auto-corrigir. Isso reduz a dependência de milhares de anotadores humanos e torna a IA mais consistente eticamente.</p>
+                
+                <div class="q-block" style="background-color: #3498db; color: #fff;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>DICA DO PLAYER: Chain of Thought</strong> — Quer que a IA resolva problemas complexos? Peça para ela "pensar passo a passo". Isso ativa neurônios de raciocínio sequencial que seriam ignorados em respostas diretas.</p>
+                </div>
+
+                <p>Mas como a IA processa esses princípios? O segredo está no motor que revolucionou tudo em 2017...</p>
+                <div class="fonte-box">Fonte: Bai et al., "Constitutional AI: Harmless Opera" (2022).</div>
             </div>
             <span class="footer-page">02</span>
         </article>
@@ -120,16 +135,20 @@
         <article class="page theme-engine" aria-labelledby="chapter-3">
             <div class="retro-box">
                 <h2 id="chapter-3">Mundo 1-3: O Motor Transformer</h2>
-                <p>Em 2017, <strong>8 pesquisadores do Google</strong> publicaram um artigo de 11 páginas que mudou o mundo. O título? <em>"Attention Is All You Need"</em>. Ali nasceu o <span class="highlight">Transformer</span> — o "T" da sigla GPT.</p>
-                <p>Antes dele, as IAs liam texto <strong>palavra por palavra</strong>. O Transformer mudou a regra: ele olha a frase <strong>inteira de uma vez</strong>, entendendo o contexto completo em milissegundos.</p>
-                <p>Em 2026, essa arquitetura evoluiu para os <span class="highlight">Modelos Agênticos</span> — IAs que não só respondem, mas <strong>executam tarefas complexas sozinhas</strong>:</p>
-                <ul style="font-family: 'VT323', monospace; font-size: 18pt; margin-bottom: 0.8cm; padding-left: 1.5cm;">
-                    <li>👁️ <strong>Veem</strong> imagens e vídeos em tempo real</li>
-                    <li>👂 <strong>Ouvem</strong> e falam com voz natural (A2A)</li>
-                    <li>💻 <strong>Escrevem código</strong>, executam e corrigem bugs</li>
-                    <li>🤖 <strong>Operam ferramentas</strong> e navegam na web</li>
-                </ul>
-                <p>O <strong>Gemini 3.1 Pro</strong> do Google e o <strong>Claude Opus 4.7</strong> são os maiores exemplos: processam texto, áudio, vídeo e código na mesma arquitetura. Mas <strong>quanto de informação essas máquinas lembram de uma vez?</strong> Prepare-se...</p>
+                <p>Em 2017, o Google lançou o artigo <em>"Attention Is All You Need"</em>. A grande inovação foi o mecanismo de <strong>Atenção</strong>: a capacidade da IA de focar em palavras específicas de uma frase para entender o sentido, ignorando o ruído.</p>
+                <p>Antes, as IAs esqueciam o início da frase ao chegar no fim. O Transformer olha para <strong>todos os tokens simultaneamente</strong> usando <span class="highlight">Self-Attention</span>, permitindo um processamento massivamente paralelo e veloz.</p>
+                
+                <div class="q-block">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>SISTEMA AGÊNTICO:</strong> Em 2026, não falamos mais apenas de "Chat". Os modelos são Agentes que usam o Transformer para planejar e executar ações em ferramentas externas (como seu navegador ou terminal).</p>
+                </div>
+
+                <p>O <strong>Gemini 3.1 Pro</strong> e o <strong>Claude 4.7</strong> são <em>Multimodais Nativos</em>: eles "vêem" e "ouvem" usando a mesma estrutura de Transformer. Mas quanto eles conseguem "lembrar" de uma vez só?</p>
+                
+                <div class="powerup-block" style="background-color: #f39c12;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>POWER-UP: Open Source</strong> — Em 2026, modelos como <strong>Llama 4</strong> e <strong>Gemma 4</strong> alcançaram o nível do GPT-5, permitindo que qualquer desenvolvedor rode uma Super IA em seu próprio hardware.</p>
+                </div>
+                
+                <div class="fonte-box">Fonte: Vaswani et al., "Attention Is All You Need" (2017).</div>
             </div>
             <span class="footer-page">03</span>
         </article>
@@ -138,16 +157,20 @@
         <article class="page theme-tokens" aria-labelledby="chapter-4">
             <div class="retro-box">
                 <h2 id="chapter-4">Mundo 1-4: Tokens e Contexto</h2>
-                <p>A IA não lê "palavras". Ela fatia o texto em pedaços chamados <span class="highlight">Tokens</span>. "Mario" é 1 token. "Inconstitucionalíssimo"? São <strong>5 tokens</strong>. Cada token vira um número gigantesco dentro da rede neural.</p>
-                <p>A grande batalha da indústria é a <strong>Janela de Contexto</strong> — quantos tokens a IA consegue "lembrar" de uma só vez. A evolução é absurda:</p>
-                <ul style="font-family: 'VT323', monospace; font-size: 18pt; margin-bottom: 0.8cm; padding-left: 1.5cm;">
-                    <li>📄 GPT-3 (2020): <span class="highlight">2 mil</span> tokens — algumas páginas</li>
-                    <li>📖 GPT-5.5 (2026): <span class="highlight">1 milhão</span> — vários livros</li>
-                    <li>📚 Claude Opus 4.7: <span class="highlight">1 milhão</span> — um código inteiro</li>
-                    <li>🏛️ Grok 4.2 (xAI): <span class="highlight">2 milhões</span> — uma biblioteca</li>
-                </ul>
-                <p>A IA calcula a <strong>probabilidade matemática</strong> do próximo token. Se "Super" apareceu milhões de vezes ao lado de "Mario" no treinamento, o peso numérico dessa conexão é altíssimo. Ela gera "Mario" automaticamente.</p>
-                <p>Parece simples, não é? Mas quando você junta <strong>bilhões desses pesos</strong> funcionando ao mesmo tempo, algo estranho acontece. Algo que ninguém consegue explicar...</p>
+                <p>A IA quebra o texto em <span class="highlight">Tokens</span> (pedaços de palavras). Um token é como uma coordenada em um mapa matemático de 1.536 dimensões. Palavras com sentidos próximos ficam "perto" uma da outra nesse espaço vetorial.</p>
+                
+                <div class="powerup-block">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>NEEDLE IN A HAYSTACK:</strong> O teste definitivo de 2026. Colocamos uma informação aleatória no meio de 1 milhão de tokens. Se a IA a encontra, sua "atenção" é perfeita. Gemini e Claude agora gabaritam esse teste.</p>
+                </div>
+
+                <p>Com janelas de contexto de <strong>2 milhões de tokens</strong>, você pode dar à IA o código inteiro de um sistema operacional ou 20 livros de uma vez. Ela não apenas lê, ela <strong>raciocina</strong> sobre toda essa base de conhecimento instantaneamente.</p>
+                
+                <div class="q-block" style="background-color: #9b59b6; color: #fff;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>ESTRATÉGIA: RAG</strong> — Mesmo com janelas gigantes, o <em>Retrieval-Augmented Generation</em> ainda é usado para buscar dados em tempo real na web, garantindo que a IA nunca fique desatualizada.</p>
+                </div>
+
+                <p>Mas mesmo com tanta memória, a forma como a IA toma decisões ainda é um mistério matemático...</p>
+                <div class="fonte-box">Fonte: Benchmarks de Janelas de Contexto (Gemini 3.1/Claude 4.7).</div>
             </div>
             <span class="footer-page">04</span>
         </article>
@@ -156,15 +179,18 @@
         <article class="page" aria-labelledby="chapter-5">
             <div class="retro-box boss-box">
                 <h2 id="chapter-5">Fase do Chefão: A Caixa Preta</h2>
-                <p>E se uma máquina aprendesse algo que <strong>ninguém ensinou</strong>? Não é ficção científica. Modelos como o <strong>GPT-5.5</strong> e o <strong>Claude Opus 4.7</strong> desenvolvem habilidades que surgem do nada. A comunidade científica chama isso de <span class="highlight">Comportamentos Emergentes</span>.</p>
-                <p>O problema é brutal: <strong>ninguém sabe como</strong>. Os bilhões de pesos ocultos formam um labirinto matemático insondável. A IA acerta, mas não consegue explicar por quê. É a temida <span class="highlight">Caixa Preta</span>.</p>
-                <p>Para desvendar esse mistério, a <strong>Anthropic</strong> lidera o campo de <strong>Interpretabilidade Mecanística</strong>. Em 2024, eles conseguiram:</p>
+                <p>Modelos como <strong>GPT-5.5</strong> desenvolvem "Habilidades Emergentes" que não foram programadas. O problema? Eles são uma <strong>Caixa Preta</strong>. Sabemos o que entra e o que sai, mas o "porquê" interno é um labirinto de bilhões de neurônios artificiais.</p>
+                <p>Para resolver isso, a Anthropic usa <strong>Sparse Autoencoders (SAEs)</strong>. Em 2024, eles conseguiram decompor os milhões de neurônios em "características" (features) compreensíveis.</p>
                 <ul style="font-family: 'VT323', monospace; font-size: 18pt; margin-bottom: 0.8cm; padding-left: 1.5cm; color: #eee;">
-                    <li>🔬 Mapear <strong>milhões de conceitos</strong> dentro do Claude</li>
-                    <li>🌉 Achar o neurônio exato que pensa em <strong>"Ponte Golden Gate"</strong></li>
-                    <li>🐍 Achar o neurônio exato que pensa em <strong>"Código Python"</strong></li>
+                    <li>🔬 <strong>Mapeamento de Conceitos:</strong> Identificaram o grupo de neurônios que ativa apenas para "Engenharia Genética" ou "Mentira".</li>
+                    <li>🌉 <strong>Intervenção Direta:</strong> Ao "pinçar" esses neurônios, podemos forçar a IA a falar apenas de um assunto ou mudar seu tom.</li>
                 </ul>
-                <p>Em 2026, modelos abertos como o <strong>Llama 4</strong> (Meta) e o <strong>Gemma 4</strong> (Google) também desafiam os proprietários. Alinhar toda essa inteligência para que seja <strong>útil e segura</strong> é a missão mais urgente da nossa era. Compreender a mente da IA é o <strong>verdadeiro chefe final</strong>.</p>
+                <p>Dominar a <strong>Interpretabilidade Mecanística</strong> é o segredo para criar Superinteligências Seguras (ASI). Em 2026, estamos finalmente aprendendo a ler os pensamentos da máquina.</p>
+                
+                <div class="powerup-block" style="background-color: #c0392b;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>ALERTA DE BOSS: Alucinações</strong> — Nunca confie 100%. A IA é uma máquina de probabilidade, não de verdade. Ela pode gerar mentiras que parecem perfeitamente lógicas. Verifique sempre as fontes!</p>
+                </div>
+                <div class="fonte-box">Fonte: Anthropic, "Mapping the Mind of a Large Language Model" (2024).</div>
             </div>
             <span class="footer-page">05</span>
         </article>
@@ -184,31 +210,37 @@
                         <ul style="font-family: 'VT323', monospace; font-size: 14pt; margin-top: 10px; padding-left: 1cm; list-style: circle;">
                             <li><strong>TDAH Infantil</strong>: IAs que ajustam o traço e a complexidade de livros de colorir para reduzir a sobrecarga cognitiva.</li>
                             <li><strong>Cognição na Terceira Idade</strong>: Estímulos visuais nostálgicos gerados por IA para auxiliar na recuperação de memórias.</li>
-                            <li>🎶 <strong>Sinfonia Terapêutica</strong>: Frequências Solfeggio personalizadas via Suno/LoudMe para regulação emocional profunda.</li>
                         </ul>
                     </li>
                 </ul>
                 
                 <p>O segredo final? O sucesso digital nasce do tripé: <strong style="color: #e74c3c;">Oferta Clara + Criativo de Impacto + Página Simples</strong>. A IA é o motor potente, mas o propósito humano é o volante que define a direção do sucesso.</p>
+                
+                <div class="q-block" style="background-color: #273c75; color: #fff; border-color: #fbc531;">
+                    <p style="margin-bottom: 0; font-size: 14pt;"><strong>CONCEITO MASTER: Agência</strong> — O futuro não é o chat, é a agência. IAs que não esperam ordens, mas que buscam proativamente atingir os objetivos que você definiu. O player agora é um Diretor.</p>
+                </div>
+                <div class="fonte-box">Fonte: Metodologias de Hiper-Personalização e Design Centrado na Dor.</div>
             </div>
             <span class="footer-page">06</span>
         </article>
 
         <!-- REFERÊNCIAS -->
-        <article class="page theme-archive" aria-labelledby="chapter-6">
-            <div class="retro-box">
+        <article class="page" aria-labelledby="chapter-ref">
+            <div class="retro-box" style="background-color: #fff; color: #000; border: 4px solid #000; padding: 1.5cm;">
                 <h2 id="chapter-6">Mundo Especial: Referências</h2>
                 <p>Quer ir além? Os artigos e marcos abaixo são o <strong>código-fonte</strong> de tudo que você leu neste e-book:</p>
                 <ul class="book-index" style="margin-top: 0.5cm; font-family: 'VT323', monospace; font-size: 13pt; text-align: center;">
-                    <li><a href="https://arxiv.org/abs/1706.03762" target="_blank"><strong style="font-size: 13pt;">Attention Is All You Need (2017)</strong></a><br><span style="font-size: 10pt;">O paper que criou o Transformer — o motor de toda IA moderna. Vaswani et al., Google Brain.</span></li>
-                    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank"><strong style="font-size: 13pt;">Constitutional AI (2022)</strong></a><br><span style="font-size: 10pt;">Como a Anthropic ensinou o Claude a se auto-regular com regras éticas fixas. Bai et al.</span></li>
-                    <li><a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank"><strong style="font-size: 13pt;">Mapping the Mind of a Large Language Model (2024)</strong></a><br><span style="font-size: 10pt;">O avanço em abrir a "Caixa Preta", mapeando milhões de conceitos dentro do Claude.</span></li>
-                    <li><a href="https://openai.com/index/introducing-gpt-5/" target="_blank"><strong style="font-size: 13pt;">GPT-5 Launch (Agosto 2025)</strong></a><br><span style="font-size: 10pt;">OpenAI apresenta raciocínio adaptativo dual e inicia a era dos modelos agênticos.</span></li>
-                    <li><a href="https://deepmind.google/technologies/gemini/" target="_blank"><strong style="font-size: 13pt;">Gemini 3.1 Pro (Fevereiro 2026)</strong></a><br><span style="font-size: 10pt;">Google DeepMind entrega modelo multimodal nativo com 1 milhão de tokens.</span></li>
-                    <li><a href="https://www.anthropic.com/claude" target="_blank"><strong style="font-size: 13pt;">Claude Opus 4.7 (Abril 2026)</strong></a><br><span style="font-size: 10pt;">Anthropic lança referência para workflows agênticos e engenharia de software.</span></li>
+                    <li><a href="https://arxiv.org/abs/1706.03762" target="_blank"><strong style="font-size: 13pt;">Attention Is All You Need (2017)</strong></a><br><span style="font-size: 10pt;">Vaswani et al. O motor de toda IA moderna e do sistema de "Atenção".</span></li>
+                    <li><a href="https://arxiv.org/abs/2001.08361" target="_blank"><strong style="font-size: 13pt;">Scaling Laws for Neural LMs (2020)</strong></a><br><span style="font-size: 10pt;">Kaplan et al. A prova matemática de que mais dados e computação geram inteligência.</span></li>
+                    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank"><strong style="font-size: 13pt;">Constitutional AI (2022)</strong></a><br><span style="font-size: 10pt;">Anthropic. Como o Claude se auto-regula com uma "Constituição" ética.</span></li>
+                    <li><a href="https://arxiv.org/abs/2305.18290" target="_blank"><strong style="font-size: 13pt;">Direct Preference Optimization (2023)</strong></a><br><span style="font-size: 10pt;">Rafailov et al. A técnica que simplificou o alinhamento humano (DPO).</span></li>
+                    <li><a href="https://www.nature.com/articles/s41586-024-07546-0" target="_blank"><strong style="font-size: 13pt;">Model Collapse (Nature 2024)</strong></a><br><span style="font-size: 10pt;">Shumailov et al. O alerta sobre o uso excessivo de dados sintéticos.</span></li>
+                    <li><a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank"><strong style="font-size: 13pt;">Mapping the Mind of LLMs (2024)</strong></a><br><span style="font-size: 10pt;">A descoberta dos SAEs para abrir a "Caixa Preta" da inteligência artificial.</span></li>
+                    <li><a href="https://arxiv.org/abs/2005.11401" target="_blank"><strong style="font-size: 13pt;">Retrieval-Augmented Generation (2020)</strong></a><br><span style="font-size: 10pt;">Lewis et al. A estratégia de conectar a IA a dados externos (RAG).</span></li>
+                    <li><a href="https://arxiv.org/abs/2201.11903" target="_blank"><strong style="font-size: 13pt;">Chain-of-Thought Prompting (2022)</strong></a><br><span style="font-size: 10pt;">Wei et al. O segredo de pedir para a IA "pensar passo a passo".</span></li>
+                    <li><a href="https://deepmind.google/technologies/gemini/static/pdf/Gemini_1_5_Report.pdf" target="_blank"><strong style="font-size: 13pt;">Multimodal Technical Reports</strong></a><br><span style="font-size: 10pt;">Benchmarks de janelas de contexto e capacidades multimodais de 2024-2026.</span></li>
                 </ul>
             </div>
-            <span class="footer-page">07</span>
         </article>
 
         <!-- FINAL -->
@@ -222,7 +254,6 @@
                     PONTUAÇÃO: 99999<br>2026
                 </p>
             </div>
-            <span class="footer-page">08</span>
         </article>
     </main>
 

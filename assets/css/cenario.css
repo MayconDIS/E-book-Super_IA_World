@@ -1,0 +1,98 @@
+/* === ESTILOS DO CENÁRIO EXTERNO (WORLD MAP) === */
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    padding-bottom: 140px; 
+    background-color: #fff; /* Fundo base branco */
+}
+
+/* Container do cenário de fundo - AGORA COM O CÉU */
+.world-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Fica atrás de tudo, mas seus filhos podem subir */
+    pointer-events: none;
+    background: linear-gradient(to bottom, #5c94fc 60%, #ffffff 100%);
+    background-attachment: fixed;
+}
+
+/* Estilo Base das Decorações */
+.bg-deco {
+    position: absolute;
+    image-rendering: pixelated;
+    filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.2));
+    z-index: 1; /* Acima do degradê do world-bg */
+}
+
+/* Nuvens Animadas */
+.bg-cloud {
+    position: absolute;
+    image-rendering: pixelated;
+    z-index: 0; /* Entre o céu e os personagens */
+    animation: moveClouds 25s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes moveClouds {
+    from { transform: translateX(-150px); left: -150px; }
+    to { transform: translateX(110vw); left: 0; }
+}
+
+/* Personagens e Itens */
+.bg-toad { bottom: calc(145px - 0.5cm); left: calc(8vw + 6cm); width: 80px; z-index: 6; }
+.bg-yoshi { bottom: calc(145px - 0.5cm); right: calc(5vw + 3cm); width: calc(100px + 1cm); transform: scaleX(-1); z-index: 6; }
+.bg-flower-fire { bottom: 120px; left: calc(8vw + 2cm); width: 50px; z-index: 5; }
+.bg-flower-ice { bottom: 120px; right: calc(5vw + 8cm); width: 50px; z-index: 5; }
+
+/* Blocos e Tijolos */
+.bg-block-1 { bottom: 350px; left: 20vw; width: 50px; animation: float 3s ease-in-out infinite; }
+.bg-block-2 { bottom: 350px; left: calc(20vw + 55px); width: 50px; animation: float 3s ease-in-out infinite; animation-delay: 0.2s; }
+.bg-block-3 { bottom: 350px; left: calc(20vw + 110px); width: 50px; animation: float 3s ease-in-out infinite; animation-delay: 0.4s; }
+
+.bg-brick-1 { bottom: 350px; right: 8vw; width: 50px; animation: float 3s ease-in-out infinite; }
+.bg-brick-2 { bottom: 350px; right: calc(8vw + 55px); width: 50px; animation: float 3s ease-in-out infinite; animation-delay: 0.2s; }
+
+/* Balas (Bullet Bill) */
+.bg-bullet { 
+    top: 40%; 
+    right: -100px; 
+    width: 80px; 
+    animation: moveBulletLeft 12s linear infinite; 
+}
+
+.bg-bullet-2 { 
+    top: 25%; 
+    right: -100px; 
+    width: 50px; 
+    animation: moveBulletLeft 18s linear infinite; 
+    animation-delay: 5s; 
+    opacity: 0.6; 
+}
+
+@keyframes moveBulletLeft {
+    from { transform: translateX(0); right: -150px; }
+    to { transform: translateX(-115vw); right: -150px; }
+}
+
+/* Chão (Piso) */
+.ground-real {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background-image: url('../figures/piso.png');
+    background-repeat: repeat-x;
+    background-size: auto 140px;
+    image-rendering: pixelated;
+    z-index: 5;
+    display: block !important;
+}
+
+/* Reaproveitando animações para evitar duplicatas */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes shine { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.5) drop-shadow(0 0 10px gold); } }
