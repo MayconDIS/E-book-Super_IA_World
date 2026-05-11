@@ -136,9 +136,7 @@ main {
 
 /* Contracapa (última página) - usa tijolinhos */
 .page.endcover {
-    justify-content: center;
-    align-items: center;
-    /* herda background-image dos tijolinhos do .page */
+    /* Removido justify-content: center para manter consistência com as outras páginas */
 }
 
 .cover-box { 
@@ -244,30 +242,51 @@ h2 + p::first-letter {
 .book-index a { color: #000; text-decoration: none; }
 .book-index a:hover { color: #ff3838; }
 
-/* === Temas por Capítulo === */
+/* === Temas Semânticos por Capítulo === */
 
-/* Mundo 1-1 — Verde Suave */
-.theme-green .retro-box { background-color: #d4f5d4; }
-.theme-green .retro-box h2 { color: #007a00; border-bottom-color: #00cc00; }
-.theme-green h2 + p::first-letter { color: #00cc00; }
-.theme-green .highlight { background-color: #00cc00; color: #fff; }
+/* Mundo 1-1: Dados e Internet (Digital Cyan) */
+.theme-data .retro-box { background-color: #cffcfc; }
+.theme-data .retro-box h2 { color: #007a7a; border-bottom-color: #00cccc; }
+.theme-data h2 + p::first-letter { color: #00cccc; }
+.theme-data .highlight { background-color: #00cccc; color: #000; }
 
-/* Mundo 1-2 — Azul Suave */
-.theme-blue .retro-box { background-color: #d0f4ff; }
-.theme-blue .retro-box h2 { color: #007a99; border-bottom-color: #00ddff; }
-.theme-blue h2 + p::first-letter { color: #00aacc; }
-.theme-blue .highlight { background-color: #00ddff; color: #000; }
+/* Mundo 1-2: Fator Humano (Calor/Empatia - Peach) */
+.theme-human .retro-box { background-color: #ffe5d9; }
+.theme-human .retro-box h2 { color: #a35a42; border-bottom-color: #ff8c69; }
+.theme-human h2 + p::first-letter { color: #ff8c69; }
+.theme-human .highlight { background-color: #ff8c69; color: #fff; }
 
-/* Mundo 1-3 — Amarelo Suave (padrão) */
-.theme-yellow .retro-box { background-color: #fff4cc; }
-.theme-yellow .retro-box h2 { color: #8a6d00; border-bottom-color: #fccb28; }
-.theme-yellow h2 + p::first-letter { color: #cc9900; }
+/* Mundo 1-3: Motor Transformer (Estrutura/Mecânica - Soft Teal) */
+.theme-engine .retro-box { background-color: #d0f0f0; }
+.theme-engine .retro-box h2 { color: #006a6a; border-bottom-color: #4db6ac; }
+.theme-engine h2 + p::first-letter { color: #4db6ac; }
+.theme-engine .highlight { background-color: #4db6ac; color: #fff; }
 
-/* Mundo 1-4 — Vermelho Suave */
-.theme-red .retro-box { background-color: #ffd6d6; }
-.theme-red .retro-box h2 { color: #a30000; border-bottom-color: #ff3838; }
-.theme-red h2 + p::first-letter { color: #ff3838; }
-.theme-red .highlight { background-color: #ff3838; color: #fff; }
+/* Mundo 1-4: Tokens e Contexto (Memória/Fragmentos - Lavender) */
+.theme-tokens .retro-box { background-color: #f3e5f5; }
+.theme-tokens .retro-box h2 { color: #6a0dad; border-bottom-color: #b39ddc; }
+.theme-tokens h2 + p::first-letter { color: #b39ddc; }
+.theme-tokens .highlight { background-color: #b39ddc; color: #fff; }
+
+/* Bônus: Impacto Humano (Crescimento/Sucesso - Mint Emerald) */
+.theme-impact .retro-box { background-color: #d5f5e3; }
+.theme-impact .retro-box h2 { color: #1e8449; border-bottom-color: #52be80; }
+.theme-impact h2 + p::first-letter { color: #52be80; }
+.theme-impact .highlight { background-color: #52be80; color: #fff; }
+
+/* Referências: Arquivo/Biblioteca (Parchment - Cream) */
+.theme-archive .retro-box { background-color: #fdf5e6; }
+.theme-archive .retro-box h2 { color: #8b4513; border-bottom-color: #deb887; }
+.theme-archive h2 + p::first-letter { color: #deb887; }
+
+/* Vitória: Fase Completa (Reward - Gold) */
+.theme-victory .retro-box { background-color: #fff9e6; }
+.theme-victory .retro-box h2 { color: #b8860b; border-bottom-color: #fccb28; }
+.theme-victory h2 + p::first-letter { color: #fccb28; }
+
+/* Mapa do Mundo: Vanilla / Papel Antigo */
+.theme-vanilla .retro-box { background-color: #fcfcfc; }
+.theme-vanilla .retro-box h2 { color: #000; border-bottom-color: #000; }
 
 /* Fase do Chefão — Escuro com acentos */
 .boss-box { background-color: #2a2a2a; color: #fff; border-color: #ff3838; }
