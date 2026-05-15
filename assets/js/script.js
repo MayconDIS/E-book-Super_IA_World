@@ -26,22 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnPdf = document.getElementById('btn-pdf');
   if(btnPdf) {
     btnPdf.addEventListener('click', () => {
-      const originalText = btnPdf.innerText;
-      btnPdf.innerText = "GERANDO...";
-      
-      const element = document.body;
-      
-      const opt = {
-        margin:       0,
-        filename:     'Super_IA_World_Ebook.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-
-      html2pdf().set(opt).from(element).save().then(() => {
-        btnPdf.innerText = originalText;
-      });
+      window.print();
     });
   }
 });

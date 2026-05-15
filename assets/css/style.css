@@ -481,42 +481,136 @@ h2 + p::first-letter {
 }
 
 @media print {
-  #btn-pdf { display: none !important; }
-*, *::before, *::after {
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-}
+    @page { 
+        size: A4; 
+        margin: 0; 
+    }
 
-body {
-background: white !important;
-display: block !important;
-margin: 0 !important;
-padding: 0 !important;
-}
+    /* Esconde elementos decorativos do tema */
+    #pipe-container, .ground-real, .world-bg, #btn-pdf { 
+        display: none !important; 
+    }
 
-main {
-display: block !important;
-gap: 0 !important;
-padding: 0 !important;
-}
+    /* Reset do body */
+    body { 
+        background: white !important; 
+        padding: 0; 
+        margin: 0;
+        display: block; 
+    }
 
-#pipe-container, .pipe-collar, .footer-page {
-display: none !important;
-}
+    /* Main sem gaps */
+    main { 
+        padding: 0; 
+        gap: 0; 
+        display: block; 
+    }
 
-.page {
-width: 21cm !important;
-min-height: 29.7cm !important;
-height: auto !important;
-max-width: 21cm !important;
-margin: 0 !important;
-margin-bottom: 0 !important;
-box-shadow: none !important;
-page-break-after: always !important;
-break-after: page !important;
-page-break-inside: avoid !important;
-padding: 1cm !important;
-background-size: cover !important;
+    /* Cada .page = exatamente 1 folha A4 */
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 1cm;
+        box-shadow: none !important;
+        /* Mantém os tijolinhos no PDF */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Retro-box ocupa a folha com padding interno */
+    .retro-box {
+        animation: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 2cm 2.5cm !important;
+        flex-grow: 1;
+    }
+
+    /* Preserva cores suaves dos capítulos no PDF */
+    .theme-vanilla .retro-box { background-color: #fff8e0 !important; }
+    .theme-data .retro-box { background-color: #e8f8e8 !important; }
+    .theme-human .retro-box { background-color: #e4f6fb !important; }
+    .theme-engine .retro-box { background-color: #fff8e0 !important; }
+    .theme-tokens .retro-box { background-color: #fde8e8 !important; }
+    .theme-impact .retro-box { background-color: #e4f6fb !important; }
+
+    /* Boss box → fundo claro para impressão */
+    .boss-box { 
+        background-color: #f0f0f0 !important; 
+        color: #000 !important;
+    }
+    .boss-box h2 { color: #333 !important; border-bottom-color: #333 !important; }
+    .boss-box p { color: #000 !important; }
+    .boss-box ul { color: #000 !important; }
+
+    /* Capa — mantém imagem */
+    .page.cover {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    .cover-box { 
+        border: none !important; 
+        box-shadow: none !important; 
+    }
+
+    /* Tipografia da capa para impressão */
+    .mario-logo { animation: none !important; }
+    .super-text {
+        color: #333 !important;
+        -webkit-text-stroke: 2px #000 !important;
+        text-shadow: 4px 4px 0 #ccc !important;
+    }
+    .ia-world-text {
+        -webkit-text-stroke: 2px #000 !important;
+        text-shadow: 4px 4px 0 #ccc !important;
+    }
+    .subtitle { 
+        color: #fff !important; 
+        text-shadow: 3px 3px 0 #000 !important; 
+        animation: none !important; 
+    }
+    .author { 
+        color: #000 !important; 
+        text-shadow: none !important;
+        background-color: #eee !important;
+        border-color: #000 !important;
+        box-shadow: none !important;
+    }
+
+    /* Títulos e texto */
+    h1 { 
+        animation: none !important; 
+        text-shadow: none !important; 
+    }
+    h2 { color: #000 !important; border-bottom-color: #333 !important; }
+
+    /* Highlights legíveis na impressão */
+    .highlight { 
+        box-shadow: none !important; 
+        background: #e0e0e0 !important; 
+        color: #000 !important; 
+        border-color: #666 !important;
+    }
+
+    /* Rodapé de página */
+    .footer-page { 
+        color: #333 !important; 
+        text-shadow: none !important; 
+        bottom: 1.5cm !important;
+    }
+
+    /* Links */
+    .book-index a { color: #000 !important; }
+
+    /* Listas */
+    ul { color: #000 !important; }
 }
 
 .page:last-child {
