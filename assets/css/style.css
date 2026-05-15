@@ -487,7 +487,7 @@ h2 + p::first-letter {
     }
 
     /* Esconde elementos decorativos do tema */
-    #pipe-container, .ground-real, .world-bg, #btn-pdf { 
+    #pipe-container, .ground-real, .world-bg, #btn-pdf, .deco-img, .end-img { 
         display: none !important; 
     }
 
@@ -524,14 +524,18 @@ h2 + p::first-letter {
         flex-direction: column;
     }
 
-    /* Retro-box ocupa a folha com padding interno */
-    .retro-box {
-        animation: none !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 2cm 2.5cm !important;
-        flex-grow: 1;
-    }
+    /* Otimização de espaço para conteúdo não quebrar a página */
+    p { font-size: 14pt !important; line-height: 1.2 !important; margin-bottom: 0.3cm !important; }
+    h2 { font-size: 11pt !important; margin-bottom: 0.3cm !important; padding-bottom: 5px !important; }
+    h2 + p::first-letter { font-size: 24pt !important; margin-right: 6px !important; }
+    .highlight { font-size: 14pt !important; padding: 0 4px !important; }
+    .block-content-text { font-size: 11pt !important; }
+    .q-block, .powerup-block, .fonte-box { padding: 10px !important; margin-bottom: 0.3cm !important; }
+    .book-index li { font-size: 9pt !important; margin-bottom: 10px !important; padding-bottom: 5px !important; }
+    .bonus-list li { font-size: 12pt !important; margin-bottom: 5px !important; }
+    .ref-link-desc { font-size: 10pt !important; }
+    .ref-link-title { font-size: 11pt !important; }
+    .retro-box { padding: 1.5cm 1.5cm !important; }
 
     /* Preserva cores suaves dos capítulos no PDF */
     .theme-vanilla .retro-box { background-color: #fff8e0 !important; }
@@ -611,23 +615,17 @@ h2 + p::first-letter {
 
     /* Listas */
     ul { color: #000 !important; }
-}
 
-.page:last-child {
-page-break-after: auto !important;
-break-after: auto !important;
-}
-
-.retro-box, .cover-box, .boss-box,
-.powerup-block, .q-block, .highlight,
-.theme-data, .theme-human, .theme-engine,
-.theme-tokens, .theme-impact, .theme-archive,
-.theme-victory, .theme-vanilla,
-.cover-author-badge, .bonus-q-block,
-.theme-green-block, .theme-blue-block,
-.theme-orange-block, .theme-purple-block,
-.theme-red-block, .ref-box {
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-}
+    .retro-box, .cover-box, .boss-box,
+    .powerup-block, .q-block, .highlight,
+    .theme-data, .theme-human, .theme-engine,
+    .theme-tokens, .theme-impact, .theme-archive,
+    .theme-victory, .theme-vanilla,
+    .cover-author-badge, .bonus-q-block,
+    .theme-green-block, .theme-blue-block,
+    .theme-orange-block, .theme-purple-block,
+    .theme-red-block, .ref-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 }
