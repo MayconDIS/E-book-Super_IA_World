@@ -486,14 +486,14 @@ h2 + p::first-letter {
         margin: 0; 
     }
 
-    /* Esconde elementos decorativos do tema */
-    #pipe-container, .ground-real, .world-bg, #btn-pdf, .deco-img, .end-img { 
+    /* Esconde elementos funcionais do tema */
+    #pipe-container, #btn-pdf { 
         display: none !important; 
     }
 
     /* Reset do body */
     body { 
-        background: white !important; 
+        background: transparent !important; 
         padding: 0; 
         margin: 0;
         display: block; 
