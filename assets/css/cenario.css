@@ -96,3 +96,14 @@ body {
 /* Reaproveitando animações para evitar duplicatas */
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 @keyframes shine { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.5) drop-shadow(0 0 10px gold); } }
+
+/* ============================================
+PRINT / PDF
+============================================ */
+
+@media print {
+body {
+padding-bottom: 0 !important;
+overflow: visible !important;
+}
+}
