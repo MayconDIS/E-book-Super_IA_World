@@ -132,9 +132,9 @@ main {
 
 h1, h2 { font-family: 'Press Start 2P', cursive; text-transform: uppercase; line-height: 1.6; }
 h1 { font-size: 24pt; text-align: center; color: var(--color-accent-red); -webkit-text-stroke: 2px #000; text-shadow: 6px 6px 0px #000; animation: bounce 2s ease-in-out infinite; margin-bottom: 0.3cm; }
-h2 { font-size: 11pt; color: #000; margin-bottom: 0.3cm; text-align: center; border-bottom: 4px solid #000; padding-bottom: 5px; }
+h2 { font-size: 11pt; color: #000; margin-bottom: 0.8cm; text-align: center; border-bottom: 4px solid #000; padding-bottom: 5px; }
 
-p { text-align: left; line-height: 1.2; font-size: 14pt; margin-bottom: 0.3cm; color: #000; font-family: 'VT323', monospace; }
+p { text-align: left; line-height: 1.2; font-size: 14pt; margin-bottom: 0.5cm; color: #000; font-family: 'VT323', monospace; }
 
 h2 + p::first-letter {
   font-family: 'Press Start 2P', cursive;
@@ -174,24 +174,25 @@ h2 + p::first-letter {
 .powerup-block, .q-block {
   border: 4px solid #000;
   padding: 10px;
-  margin: 10px 0;
+  margin: 0.5cm 0;
   box-shadow: 4px 4px 0 #000;
   background-color: #fff;
 }
 
 .fonte-box {
-  margin-top: auto;
   font-size: 10pt;
   text-align: center;
   color: #666;
   border-top: 2px dashed #000;
   padding-top: 10px;
+  margin-bottom: -15px;
 }
 
 .footer-page {
-  position: absolute;
-  bottom: 3.5cm;
-  right: 2.7cm;
+  display: block;
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: 25px;
   font-family: 'Press Start 2P', cursive;
   font-size: 12pt;
   color: #000;
@@ -262,9 +263,16 @@ h2 + p::first-letter {
   color: #fff;
   text-shadow: 4px 4px 0 #000;
   font-size: 20px;
-  animation: blink 1.5s step-end infinite;
   margin: 0;
   font-family: 'Press Start 2P', cursive;
+}
+
+.golden-text {
+  background: linear-gradient(180deg, #ffeaa7 0%, #fdcb6e 50%, #e17055 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fdcb6e;
+  text-shadow: 2px 2px 0px #fff;
 }
 
 .cover-author-badge {
@@ -282,11 +290,15 @@ h2 + p::first-letter {
 
 .cover-footer-container {
   position: absolute;
-  bottom: 3%;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: auto;
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .book-index {
@@ -329,7 +341,6 @@ h2 + p::first-letter {
 .ref-box {
   background-color: #fff;
   color: #000;
-  border: 4px solid #000;
   padding: 1.5cm;
 }
 
@@ -493,7 +504,6 @@ h2 + p::first-letter {
 
     /* Reset do body */
     body { 
-        background: transparent !important; 
         padding: 0; 
         margin: 0;
         display: block; 
@@ -525,96 +535,31 @@ h2 + p::first-letter {
     }
 
     /* Otimização de espaço para conteúdo não quebrar a página */
-    p { font-size: 14pt !important; line-height: 1.2 !important; margin-bottom: 0.3cm !important; }
-    h2 { font-size: 11pt !important; margin-bottom: 0.3cm !important; padding-bottom: 5px !important; }
+    p { font-size: 14pt !important; line-height: 1.2 !important; margin-bottom: 0.5cm !important; }
+    h2 { font-size: 11pt !important; margin-bottom: 0.8cm !important; padding-bottom: 5px !important; }
     h2 + p::first-letter { font-size: 24pt !important; margin-right: 6px !important; }
     .highlight { font-size: 14pt !important; padding: 0 4px !important; }
     .block-content-text { font-size: 11pt !important; }
-    .q-block, .powerup-block, .fonte-box { padding: 10px !important; margin-bottom: 0.3cm !important; }
-    .book-index li { font-size: 9pt !important; margin-bottom: 10px !important; padding-bottom: 5px !important; }
+    .q-block, .powerup-block { padding: 10px !important; margin-bottom: 0.5cm !important; }
+    .fonte-box { padding-top: 10px !important; margin-bottom: -15px !important; }
+    .book-index li { font-size: 10pt !important; margin-bottom: 20px !important; padding-bottom: 10px !important; }
+    .index-mario-img { width: 250px !important; margin-top: 50px !important; }
+    .end-img { width: 160px !important; margin-bottom: 10px !important; }
     .bonus-list li { font-size: 12pt !important; margin-bottom: 5px !important; }
     .ref-link-desc { font-size: 10pt !important; }
     .ref-link-title { font-size: 11pt !important; }
     .retro-box { padding: 1.5cm 1.5cm !important; }
 
-    /* Preserva cores suaves dos capítulos no PDF */
-    .theme-vanilla .retro-box { background-color: #fff8e0 !important; }
-    .theme-data .retro-box { background-color: #e8f8e8 !important; }
-    .theme-human .retro-box { background-color: #e4f6fb !important; }
-    .theme-engine .retro-box { background-color: #fff8e0 !important; }
-    .theme-tokens .retro-box { background-color: #fde8e8 !important; }
-    .theme-impact .retro-box { background-color: #e4f6fb !important; }
-
-    /* Boss box → fundo claro para impressão */
-    .boss-box { 
-        background-color: #f0f0f0 !important; 
-        color: #000 !important;
-    }
-    .boss-box h2 { color: #333 !important; border-bottom-color: #333 !important; }
-    .boss-box p { color: #000 !important; }
-    .boss-box ul { color: #000 !important; }
-
-    /* Capa — mantém imagem */
-    .page.cover {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-    .cover-box { 
-        border: none !important; 
-        box-shadow: none !important; 
-    }
-
-    /* Tipografia da capa para impressão */
-    .mario-logo { animation: none !important; }
-    .super-text {
-        color: #333 !important;
-        -webkit-text-stroke: 2px #000 !important;
-        text-shadow: 4px 4px 0 #ccc !important;
-    }
-    .ia-world-text {
-        -webkit-text-stroke: 2px #000 !important;
-        text-shadow: 4px 4px 0 #ccc !important;
-    }
-    .subtitle { 
-        color: #fff !important; 
-        text-shadow: 3px 3px 0 #000 !important; 
-        animation: none !important; 
-    }
-    .author { 
-        color: #000 !important; 
-        text-shadow: none !important;
-        background-color: #eee !important;
-        border-color: #000 !important;
-        box-shadow: none !important;
-    }
-
-    /* Títulos e texto */
-    h1 { 
-        animation: none !important; 
-        text-shadow: none !important; 
-    }
-    h2 { color: #000 !important; border-bottom-color: #333 !important; }
-
-    /* Highlights legíveis na impressão */
-    .highlight { 
-        box-shadow: none !important; 
-        background: #e0e0e0 !important; 
-        color: #000 !important; 
-        border-color: #666 !important;
-    }
 
     /* Rodapé de página */
     .footer-page { 
         color: #333 !important; 
         text-shadow: none !important; 
-        bottom: 1.5cm !important;
+        margin-bottom: 25px !important;
+        margin-top: auto !important;
+        position: static !important;
     }
 
-    /* Links */
-    .book-index a { color: #000 !important; }
-
-    /* Listas */
-    ul { color: #000 !important; }
 
     .retro-box, .cover-box, .boss-box,
     .powerup-block, .q-block, .highlight,
@@ -627,5 +572,13 @@ h2 + p::first-letter {
     .theme-red-block, .ref-box {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+    }
+
+    .golden-text {
+        font-size: 8.5pt !important;
+    }
+
+    .cover-footer-container {
+        bottom: -40px !important;
     }
 }
