@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // PDF Export Logic
+  const btnPdf = document.getElementById('btn-pdf');
+  if(btnPdf) {
+    btnPdf.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
   const sidebarLinks = document.querySelectorAll("#sidebar a");
   const sections = document.querySelectorAll("article h2[id]");
 
@@ -22,11 +30,4 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   sections.forEach((section) => observer.observe(section));
-  // PDF Export Logic
-  const btnPdf = document.getElementById('btn-pdf');
-  if(btnPdf) {
-    btnPdf.addEventListener('click', () => {
-      window.print();
-    });
-  }
 });
