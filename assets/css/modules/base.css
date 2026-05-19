@@ -1,0 +1,53 @@
+/* ============================================
+   2. RESET, BASE & TIPOGRAFIA
+   ============================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  font-family: 'VT323', monospace;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  color: #333;
+}
+
+h1, h2 { font-family: 'Press Start 2P', cursive; text-transform: uppercase; line-height: 1.6; }
+h1 { font-size: 24pt; text-align: center; color: var(--color-accent-red); -webkit-text-stroke: 2px #000; text-shadow: 6px 6px 0px #000; animation: bounce 2s ease-in-out infinite; margin-bottom: 0.3cm; }
+h2 { font-size: 11pt; color: #000; margin-bottom: 0.8cm; text-align: center; border-bottom: 4px solid #000; padding-bottom: 5px; }
+
+p { text-align: left; line-height: 1.2; font-size: 14pt; margin-bottom: 0.5cm; color: #000; font-family: 'VT323', monospace; }
+
+h2 + p::first-letter {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24pt;
+  float: left;
+  margin-right: 6px;
+  line-height: 1;
+  color: var(--color-accent-red);
+  text-shadow: 3px 3px 0px #000;
+}
+
+.highlight {
+  background-color: var(--color-highlight-default);
+  color: #fff;
+  padding: 0px 4px;
+  border: 2px solid #000;
+  font-weight: bold;
+  font-size: 14pt;
+  box-shadow: 2px 2px 0px #000;
+}
+
+/* Utilitário para Acessibilidade (Screen Readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

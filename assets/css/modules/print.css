@@ -1,0 +1,123 @@
+/* ============================================
+   7. PRINT / PDF
+   ============================================ */
+
+#btn-pdf {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-accent-red);
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10pt;
+  padding: 15px;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+#btn-pdf:hover {
+  transform: scale(1.05);
+}
+
+@media print {
+    @page { 
+        size: A4; 
+        margin: 0; 
+    }
+
+    /* Esconde elementos funcionais do tema */
+    #pipe-container, #btn-pdf { 
+        display: none !important; 
+    }
+
+    /* Reset do body */
+    body { 
+        padding: 0; 
+        margin: 0;
+        display: block; 
+    }
+
+    /* Main sem gaps */
+    main { 
+        padding: 0; 
+        gap: 0; 
+        display: block; 
+    }
+
+    /* Cada .page = exatamente 1 folha A4 */
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 1cm;
+        box-shadow: none !important;
+        /* Mantém os tijolinhos no PDF */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Otimização de espaço para conteúdo não quebrar a página */
+    p { font-size: 14pt !important; line-height: 1.2 !important; margin-bottom: 0.5cm !important; }
+    h2 { font-size: 11pt !important; margin-bottom: 0.8cm !important; padding-bottom: 5px !important; }
+    h2 + p::first-letter { font-size: 24pt !important; margin-right: 6px !important; }
+    .highlight { font-size: 14pt !important; padding: 0 4px !important; }
+    .block-content-text { font-size: 11pt !important; }
+    .q-block, .powerup-block { padding: 10px !important; margin-bottom: 0.5cm !important; }
+    .fonte-box { padding-top: 10px !important; margin-bottom: -15px !important; }
+    .book-index li { font-size: 10pt !important; margin-bottom: 20px !important; padding-bottom: 10px !important; }
+    .index-mario-img { width: 250px !important; margin-top: 50px !important; }
+    .end-box { padding-top: 2cm !important; }
+    .end-img { width: 160px !important; margin-bottom: 10px !important; }
+    .end-footer-text { margin-bottom: 2cm !important; font-size: 14pt !important; }
+    .bonus-list li { font-size: 12pt !important; margin-bottom: 5px !important; }
+    .ref-link-desc { font-size: 10pt !important; }
+    .ref-link-title { font-size: 11pt !important; }
+    .retro-box { padding: 1.5cm 1.5cm !important; }
+
+    /* Rodapé de página */
+    footer {
+        margin-top: auto !important;
+        width: 100% !important;
+    }
+
+    .end-box footer {
+        margin-top: 1cm !important;
+    }
+
+    .footer-page { 
+        color: #333 !important; 
+        text-shadow: none !important; 
+        margin-bottom: 25px !important;
+        position: static !important;
+    }
+
+    .retro-box, .cover-box, .boss-box,
+    .powerup-block, .q-block, .highlight,
+    .theme-data, .theme-human, .theme-engine,
+    .theme-tokens, .theme-impact, .theme-archive,
+    .theme-victory, .theme-vanilla,
+    .cover-author-badge, .bonus-q-block,
+    .theme-green-block, .theme-blue-block,
+    .theme-orange-block, .theme-purple-block,
+    .theme-red-block, .ref-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .golden-text {
+        font-size: 8.5pt !important;
+    }
+
+    .cover-footer-container {
+        bottom: -40px !important;
+    }
+}

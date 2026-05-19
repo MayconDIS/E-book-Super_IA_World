@@ -37,6 +37,10 @@ body {
     opacity: 0.8;
 }
 
+.cloud-1 { top: 10%; left: -200px; width: 120px; animation-delay: 0s; }
+.cloud-2 { top: 25%; left: -200px; width: 100px; animation-delay: 10s; }
+.cloud-3 { top: 50%; left: -200px; width: 140px; animation-delay: 18s; }
+
 @keyframes moveClouds {
     from { transform: translateX(-150px); left: -150px; }
     to { transform: translateX(110vw); left: 0; }

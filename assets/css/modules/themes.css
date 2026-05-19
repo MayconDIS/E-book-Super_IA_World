@@ -1,0 +1,71 @@
+/* ============================================
+   5. TEMAS POR CAPITULO & UTILIDADES
+   ============================================ */
+
+.theme-data { background-color: var(--color-data-bg); }
+.theme-data .retro-box { background-color: var(--color-data-bg); }
+.theme-data .retro-box h2 { color: var(--color-data-heading); border-bottom-color: var(--color-data-accent); }
+.theme-data h2 + p::first-letter { color: var(--color-data-accent); }
+.theme-data .highlight { background-color: var(--color-data-accent); color: #000; }
+
+.theme-human { background-color: var(--color-human-bg); }
+.theme-human .retro-box { background-color: var(--color-human-bg); }
+.theme-human .retro-box h2 { color: var(--color-human-heading); border-bottom-color: var(--color-human-accent); }
+.theme-human h2 + p::first-letter { color: var(--color-human-accent); }
+.theme-human .highlight { background-color: var(--color-human-accent); color: #fff; }
+
+.theme-engine { background-color: var(--color-engine-bg); }
+.theme-engine .retro-box { background-color: var(--color-engine-bg); }
+.theme-engine .retro-box h2 { color: var(--color-engine-heading); border-bottom-color: var(--color-engine-accent); }
+.theme-engine h2 + p::first-letter { color: var(--color-engine-accent); }
+.theme-engine .highlight { background-color: var(--color-engine-accent); color: #fff; }
+
+.theme-tokens { background-color: var(--color-tokens-bg); }
+.theme-tokens .retro-box { background-color: var(--color-tokens-bg); }
+.theme-tokens .retro-box h2 { color: var(--color-tokens-heading); border-bottom-color: var(--color-tokens-accent); }
+.theme-tokens h2 + p::first-letter { color: var(--color-tokens-accent); }
+.theme-tokens .highlight { background-color: var(--color-tokens-accent); color: #fff; }
+
+.theme-impact { background-color: var(--color-impact-bg); }
+.theme-impact .retro-box { background-color: var(--color-impact-bg); }
+.theme-impact .retro-box h2 { color: var(--color-impact-heading); border-bottom-color: var(--color-impact-accent); }
+.theme-impact h2 + p::first-letter { color: var(--color-impact-accent); }
+.theme-impact .highlight { background-color: var(--color-impact-accent); color: #fff; }
+
+.theme-archive { background-color: #e5d3b3; }
+.theme-archive .retro-box { background-color: #fdf5e6; }
+.theme-archive .retro-box h2 { color: #8b4513; border-bottom-color: #deb887; }
+.theme-archive h2 + p::first-letter { color: #deb887; }
+
+.theme-victory { background-color: var(--color-victory-bg); }
+.theme-victory .retro-box { background-color: var(--color-victory-bg); }
+.theme-victory .retro-box h2 { color: var(--color-victory-heading); border-bottom-color: var(--color-victory-accent); }
+.theme-victory h2 + p::first-letter { color: var(--color-victory-accent); }
+
+.theme-vanilla { background-color: #fcfcfc; }
+.theme-vanilla .retro-box { background-color: #fcfcfc; }
+.theme-vanilla .retro-box h2 { color: #000; border-bottom-color: #000; }
+
+.boss-box { background-color: var(--color-boss-bg); color: #fff; border-color: var(--color-boss-heading); }
+.boss-box h2 { color: var(--color-boss-heading); border-bottom-color: var(--color-boss-heading); }
+.boss-box p { color: #eee; }
+.boss-box h2 + p::first-letter { color: var(--color-boss-accent); text-shadow: 3px 3px 0px #000; }
+.boss-box .highlight { background-color: var(--color-boss-accent); color: #000; }
+
+.block-content-text { margin-bottom: 0; font-size: 14pt; }
+
+.theme-green-block { background-color: #2ecc71; border-color: #000; }
+.theme-blue-block { background-color: #3498db; color: #fff; }
+.theme-orange-block { background-color: #f39c12; }
+.theme-purple-block { background-color: #9b59b6; color: #fff; }
+.theme-red-block { background-color: #c0392b; }
+
+.bonus-list { font-family: 'VT323', monospace; font-size: 16pt; margin-bottom: 0.5cm; padding-left: 1.5cm; }
+.bonus-sublist { font-family: 'VT323', monospace; font-size: 14pt; margin-top: 10px; padding-left: 1cm; list-style: circle; }
+
+.bonus-highlight-green { color: #2ecc71; }
+.bonus-highlight-blue { color: #3498db; }
+.bonus-highlight-yellow { color: #f1c40f; }
+.bonus-highlight-red { color: #e74c3c; }
+
+.bonus-q-block { background-color: #273c75; color: #fff; border-color: #fbc531; }

@@ -1,0 +1,36 @@
+/* ============================================
+   1. VARIABLES
+   ============================================ */
+:root {
+  --color-data-bg: #cffcfc;
+  --color-data-accent: #00cccc;
+  --color-data-heading: #007a7a;
+
+  --color-human-bg: #ffe5d9;
+  --color-human-accent: #ff8c69;
+  --color-human-heading: #a35a42;
+
+  --color-engine-bg: #d0f0f0;
+  --color-engine-accent: #4db6ac;
+  --color-engine-heading: #006a6a;
+
+  --color-tokens-bg: #f3e5f5;
+  --color-tokens-accent: #b39ddc;
+  --color-tokens-heading: #6a0dad;
+
+  --color-impact-bg: #d5f5e3;
+  --color-impact-accent: #52be80;
+  --color-impact-heading: #1e8449;
+
+  --color-victory-bg: #fff9e6;
+  --color-victory-accent: #fccb28;
+  --color-victory-heading: #b8860b;
+
+  --color-boss-bg: #2a2a2a;
+  --color-boss-accent: #fccb28;
+  --color-boss-heading: #ff3838;
+
+  --color-retro-bg: #fccb28;
+  --color-highlight-default: #00cc00;
+  --color-accent-red: #ff3838;
+}
