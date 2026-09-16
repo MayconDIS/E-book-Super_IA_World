@@ -72,8 +72,6 @@ Na versão mais recente, o projeto foi reestruturado seguindo princípios profis
 │       ├── 📘 RELATORIO.md
 │       ├── ⚙️ gerar_relatorio.py
 │       └── 📂 assets/     # Logo e figuras do relatório
-├── 📂 .agent/             # Skills de agentes de IA usadas no desenvolvimento
-├── 📂 .planning/          # Planejamento e pesquisa das fases do projeto
 ├── 🤖 CLAUDE.md           # Guia de arquitetura para o Claude Code
 └── 📘 README.md           # Este arquivo
 ```
