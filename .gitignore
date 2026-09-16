@@ -14,3 +14,7 @@ Thumbs.db
 # IDEs
 .vscode/
 .idea/
+
+# Documentos oficiais da UNIP (regulamento, orientações, modelos): referência local,
+# não são para repositório público
+Extensão Universitária/MODELO/

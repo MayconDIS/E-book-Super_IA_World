@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Extensão Universitária — Ebook (50h) — Super IA World</title>
+    <!--
+      ────────────────────────────────────────────────────────────────────────
+      RELATÓRIO DE ATIVIDADE DE EXTENSÃO UNIVERSITÁRIA (50 horas)
+      UNIP · ICET · CST em Análise e Desenvolvimento de Sistemas
+      Ação: Ebook
+
+      Formato ABNT: A4, margens 3cm superior/esquerda e 2cm inferior/direita,
+      Arial 12pt, parágrafo justificado com recuo de 1,5cm.
+      Para gerar o PDF: abrir no Chrome, anexar as imagens da seção 4 clicando
+      sobre elas (se quiser trocá-las) e imprimir (Ctrl+P) na MESMA sessão, com
+      "Gráficos de segundo plano" marcado.
+
+      O ANEXO A (folhas 12 a 21) é o e-book. Para tirar a peça para
+      distribuir: Ctrl+P, intervalo de páginas 12-21, papel A4 e
+      "Gráficos de segundo plano" marcado.
+
+      O Anexo A é CÓPIA de ebook.html e assets/css/modules/, gerada por
+      gerar_relatorio.py. As imagens do e-book são lidas da pasta assets/ na
+      raiz do repositório: abrir este arquivo a partir do repositório.
+      Se o e-book mudar, regerar este relatório — não editar o anexo à mão.
+
+      PENDÊNCIAS: todo trecho com fundo amarelo tracejado (.pendente) depende de
+      informação que só o aluno tem. Resolver todos antes de submeter.
+      ────────────────────────────────────────────────────────────────────────
+    -->
+    <style>
+        @layer relatorio, peca;
+
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @layer relatorio {
+            /* 1. RESET GERAL E CONFIGURAÇÃO DO BODY */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: #525659;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 30px;
+                font-family: Arial, "Times New Roman", serif;
+                font-size: 12pt;
+                color: black;
+            }
+
+            /* 2. ESTRUTURA DA PÁGINA (Padrão ABNT Estrito - A4) */
+            .page {
+                background-color: white;
+                width: 21cm;
+                min-height: 29.7cm;
+                /* Margens ABNT: Superior 3cm, Direita 2cm, Inferior 2cm, Esquerda 3cm */
+                padding: 3cm 2cm 2cm 3cm;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                position: relative;
+            }
+
+            /* 3. NUMERAÇÃO DE PÁGINAS (ABNT - Canto superior direito) */
+            .page-number {
+                position: absolute;
+                top: 2cm;
+                right: 2cm;
+                font-size: 10pt;
+                font-family: Arial, "Times New Roman", serif;
+            }
+
+            /* 4. TIPOGRAFIA E TEXTOS */
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: bold;
+                color: black;
+                margin-top: 1.1em;
+                margin-bottom: 0.7em;
+                text-indent: 0;
+            }
+
+            h1, h2 {
+                text-align: center;
+                font-size: 14pt;
+            }
+
+            h3, h4 {
+                text-align: left;
+                font-size: 12pt;
+            }
+
+            h2:first-of-type, h3:first-child { margin-top: 0; }
+
+            p {
+                text-align: justify;
+                line-height: 1.5;
+                text-indent: 1.5cm; /* Recuo de primeira linha */
+                margin-top: 0;
+                margin-bottom: 0.8em;
+            }
+
+            ul, ol {
+                margin: 0 0 0.8em 1.5cm;
+                padding-left: 0.8cm;
+                line-height: 1.5;
+                text-align: justify;
+            }
+
+            li { margin-bottom: 0.35em; }
+
+            .uppercase { text-transform: uppercase; }
+            .no-indent { text-indent: 0; }
+
+            /* Campo ainda por preencher — visível de propósito, inclusive impresso. */
+            .pendente {
+                background-color: #ffe9a8;
+                border: 1px dashed #b58900;
+                padding: 0 4px;
+                font-weight: bold;
+            }
+
+            /* 5. TABELAS (Estrutura e Design Padrão) */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+                font-size: 12pt;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+
+            td {
+                text-align: center;
+            }
+
+            .table-dados td:first-child { text-align: left; font-weight: bold; width: 32%; }
+            .table-dados td:last-child { text-align: left; }
+
+            /* 6. SUMÁRIO (Estilo Índice ABNT) */
+            .sumario-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 12px;
+                font-size: 12pt;
+            }
+
+            .sumario-item a {
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+            }
+
+            .sumario-item a:hover {
+                text-decoration: underline;
+            }
+
+            .sumario-dots {
+                flex-grow: 1;
+                border-bottom: 1px dotted #000;
+                margin: 0 10px;
+                position: relative;
+                top: -4px;
+            }
+
+            /* 7. IMAGENS E LEGENDAS */
+            .image-container {
+                text-align: center;
+                margin: 20px 0;
+                page-break-inside: avoid;
+            }
+
+            .image-container img {
+                max-width: 100%;
+                max-height: 11cm;
+                height: auto;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                cursor: pointer;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            .image-container img:hover {
+                opacity: 0.8;
+            }
+
+            .caption {
+                text-align: center;
+                font-size: 10pt;
+                text-indent: 0;
+            }
+
+            .figure-title {
+                text-align: center;
+                font-size: 10pt;
+                text-indent: 0;
+                margin-bottom: 5px;
+            }
+
+            /* 8. ESTILOS DA CAPA */
+            .logo-unip {
+                display: block;
+                margin: 0 auto 0.5cm auto;
+                width: 6cm;
+                border: none !important;
+                cursor: default !important;
+            }
+
+            .logo-unip:hover { opacity: 1 !important; }
+
+            .capa-header {
+                text-align: center;
+                line-height: 1.5;
+                margin-bottom: 2cm;
+                font-size: 12pt;
+                font-weight: normal;
+            }
+
+            .table-capa {
+                width: 75%;
+                margin: 0 auto;
+                border: none !important;
+                border-collapse: collapse;
+            }
+
+            .table-capa th, .table-capa td {
+                border: none !important;
+                padding: 4px 8px;
+                background-color: transparent;
+                text-align: left;
+                font-size: 12pt;
+            }
+
+            .table-capa th { font-weight: bold; }
+            .table-capa td { font-weight: normal; }
+
+            .capa-footer {
+                position: absolute;
+                bottom: 2cm;
+                left: 3cm;
+                right: 2cm;
+                text-align: center;
+                line-height: 1.5;
+                font-weight: bold;
+            }
+
+            /* 9. RESPONSIVIDADE (Mobile) */
+            @media screen and (max-width: 800px) {
+                body { padding: 10px; }
+                .page { width: 100%; height: auto !important; min-height: auto; padding: 20px; margin-bottom: 15px; box-shadow: none; }
+                .capa-footer { position: relative; bottom: auto; left: auto; right: auto; margin-top: 2cm; }
+                .table-capa { width: 100%; margin-top: 2cm; margin-bottom: 2cm; }
+                p { text-indent: 1cm; }
+                ul, ol { margin-left: 0.5cm; }
+                .sumario-dots { display: none; }
+            }
+
+            /* 10. MÍDIA DE IMPRESSÃO (PDF limpo) */
+
+            @media print {
+                body { background-color: white; margin: 0; padding: 0; gap: 0; display: block; }
+                .page {
+                    box-shadow: none; margin: 0; border: none;
+                    width: 100%;
+                    min-height: 29.5cm;
+                    page-break-after: always;
+                }
+                .page:last-of-type { page-break-after: auto; }
+                .image-container img { cursor: default; }
+                .image-container img:hover { opacity: 1; }
+            }
+        }
+
+        
+        @layer relatorio {
+            /* 11. QUADRO DE CONTEÚDO (acréscimo deste relatório)
+               Três colunas com texto corrido não cabem em 12pt sem quebrar a folha;
+               a ABNT admite corpo menor em tabelas e quadros. */
+            .table-conteudo { font-size: 10pt; }
+            .table-conteudo th, .table-conteudo td { text-align: left; vertical-align: top; padding: 5px 7px; line-height: 1.3; }
+            .table-conteudo td:first-child { font-weight: bold; width: 30%; }
+        }
+
+        @layer peca {
+            /* Mesmo desenho da Cartilha: o relatório estiliza elementos nus (p, li,
+               h1..h6, ul, ol, table) com recuo ABNT, justificação e 12pt; o reset em
+               sub-camada `base` impede esse estilo de vazar para dentro do e-book, e
+               `@scope` impede o e-book de vazar para fora. `arte` vence `base` sempre.
+
+               Atenção: o e-book também chama as próprias folhas de `.page`. É o
+               `@scope` que impede a regra `.page` dele de alcançar as folhas do
+               relatório. */
+            @layer base, arte;
+
+            @layer base {
+                .anexo-a, .anexo-a * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+                .anexo-a, .anexo-a * { box-sizing: border-box; margin: 0; padding: 0; }
+
+                .anexo p, .anexo li, .anexo h1, .anexo h2, .anexo h3, .anexo h4,
+                .anexo h5, .anexo h6, .anexo ul, .anexo ol,
+                .anexo table, .anexo th, .anexo td {
+                    margin: 0;
+                    padding: 0;
+                    text-indent: 0;
+                    text-align: inherit;
+                    line-height: inherit;
+                    font-size: inherit;
+                    color: inherit;
+                    border: 0;
+                    background-color: transparent;
+                }
+            }
+
+            @layer arte {
+                /* ═══ Anexo A: e-book "Super IA World" ═══
+                   Copiado de assets/css/modules/ por script, com as url() ajustadas
+                   para a pasta do relatório. Não editar aqui: corrigir no e-book e
+                   regerar este relatório. */
+
+/* ── variables.css ── */
+/* ============================================
+   1. VARIABLES
+   ============================================ */
+:root {
+  --color-data-bg: #cffcfc;
+  --color-data-accent: #00cccc;
+  --color-data-heading: #007a7a;
+
+  --color-human-bg: #ffe5d9;
+  --color-human-accent: #ff8c69;
+  --color-human-heading: #a35a42;
+
+  --color-engine-bg: #d0f0f0;
+  --color-engine-accent: #4db6ac;
+  --color-engine-heading: #006a6a;
+
+  --color-tokens-bg: #f3e5f5;
+  --color-tokens-accent: #b39ddc;
+  --color-tokens-heading: #6a0dad;
+
+  --color-impact-bg: #d5f5e3;
+  --color-impact-accent: #52be80;
+  --color-impact-heading: #1e8449;
+
+  --color-victory-bg: #fff9e6;
+  --color-victory-accent: #fccb28;
+  --color-victory-heading: #b8860b;
+
+  --color-boss-bg: #2a2a2a;
+  --color-boss-accent: #fccb28;
+  --color-boss-heading: #ff3838;
+
+  --color-retro-bg: #fccb28;
+  --color-highlight-default: #00cc00;
+  --color-accent-red: #ff3838;
+}
+
+/* ── @keyframes de animations.css (não valem dentro de @scope) ── */
+@keyframes shine {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5) drop-shadow(0 0 10px gold); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+                @scope (.anexo-a) {
+/* ── base.css ── */
+/* ============================================
+   2. RESET, BASE & TIPOGRAFIA
+   ============================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  font-family: 'VT323', monospace;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  color: #333;
+}
+
+h1, h2 { font-family: 'Press Start 2P', cursive; text-transform: uppercase; line-height: 1.6; }
+h1 { font-size: 24pt; text-align: center; color: var(--color-accent-red); -webkit-text-stroke: 2px #000; text-shadow: 6px 6px 0px #000; animation: bounce 2s ease-in-out infinite; margin-bottom: 0.3cm; }
+h2 { font-size: 11pt; color: #000; margin-bottom: 0.8cm; text-align: center; border-bottom: 4px solid #000; padding-bottom: 5px; }
+
+p { text-align: left; line-height: 1.2; font-size: 14pt; margin-bottom: 0.5cm; color: #000; font-family: 'VT323', monospace; }
+
+h2 + p::first-letter {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24pt;
+  float: left;
+  margin-right: 6px;
+  line-height: 1;
+  color: var(--color-accent-red);
+  text-shadow: 3px 3px 0px #000;
+}
+
+.highlight {
+  background-color: var(--color-highlight-default);
+  color: #fff;
+  padding: 0px 4px;
+  border: 2px solid #000;
+  font-weight: bold;
+  font-size: 14pt;
+  box-shadow: 2px 2px 0px #000;
+}
+
+/* Utilitário para Acessibilidade (Screen Readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── layout.css ── */
+/* ============================================
+   3. LAYOUT
+   ============================================ */
+
+#pipe-container {
+  width: 260px;
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.pipe-collar {
+  width: calc(100% + 24px);
+  height: 40px;
+  margin-left: -12px;
+  background-color: #00a800;
+  background-image: linear-gradient(to right, #00a800 10%, #5ce430 30%, #00a800 60%, #005800 90%);
+  border: 6px solid #000;
+  border-bottom: 0;
+  z-index: 21;
+  position: relative;
+}
+
+#sidebar {
+  width: 100%;
+  background-color: #00a800;
+  background-image: linear-gradient(to right, #00a800 10%, #5ce430 30%, #00a800 60%, #005800 90%);
+  border: 6px solid #000;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+  font-family: 'Press Start 2P', cursive;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+#sidebar::-webkit-scrollbar { width: 12px; }
+#sidebar::-webkit-scrollbar-track { background: #008000; border-left: 2px solid #000; }
+#sidebar::-webkit-scrollbar-thumb { background: #5c94fc; border: 2px solid #000; }
+
+.sidebar-content { padding: 15px; }
+#sidebar h3 { font-size: 10pt; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 0 #000; text-align: center; line-height: 1.4; border-bottom: 4px dashed #000; padding-bottom: 10px; }
+#sidebar ul { list-style: none; }
+#sidebar li { margin-bottom: 15px; }
+#sidebar a { color: #f8d820; text-shadow: 1px 1px 0 #000; text-decoration: none; font-size: 8pt; line-height: 1.5; transition: color 0.2s, padding-left 0.2s; display: block; }
+#sidebar a:hover { color: #fff; padding-left: 5px; }
+#sidebar a.active { color: #fff; padding-left: 5px; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.page {
+  background-image: url('../../assets/figures/bloco-tijolo.png');
+  background-repeat: repeat;
+  background-size: 80px;
+  width: 21cm;
+  height: 29.7cm;
+  padding: 1cm;
+  box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+/* ── components.css ── */
+/* ============================================
+   4. COMPONENTES & PAGINAS ESPECIAIS
+   ============================================ */
+
+.retro-box {
+  background-color: var(--color-retro-bg);
+  border: 8px solid #000;
+  box-shadow: inset -5px -5px 0px rgba(0,0,0,0.2), inset 5px 5px 0px rgba(255,255,255,0.5);
+  padding: 1cm 1.2cm;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.powerup-block, .q-block {
+  border: 4px solid #000;
+  padding: 10px;
+  margin: 0.5cm 0;
+  box-shadow: 4px 4px 0 #000;
+  background-color: #fff;
+}
+
+.fonte-box {
+  font-size: 10pt;
+  text-align: center;
+  color: #666;
+  border-top: 2px dashed #000;
+  padding-top: 10px;
+  margin-bottom: -15px;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+}
+
+.footer-page {
+  display: block;
+  text-align: right;
+  margin-bottom: 25px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12pt;
+  color: #000;
+}
+
+.deco-img {
+  position: absolute;
+  image-rendering: pixelated;
+  z-index: 15;
+  pointer-events: none;
+  filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.3));
+}
+
+.fig-shy-guy { bottom: 1.5cm; right: 1.2cm; width: 65px; }
+.fig-spiny { bottom: 1.8cm; left: 1.2cm; width: 65px; }
+.fig-cogumelo-v { top: 1.2cm; right: 1.2cm; width: 55px; }
+.fig-cogumelo-g { top: 1.2cm; right: 1.2cm; width: 55px; }
+.fig-planta { bottom: 0.5cm; right: 1.5cm; width: 100px; }
+.fig-estrela { top: 1.2cm; right: 1.2cm; width: 60px; animation: float 3s ease-in-out infinite; }
+.fig-boo { top: 2cm; left: 1.2cm; width: 70px; opacity: 0.7; }
+.fig-bob-omb { bottom: 1.5cm; right: 1.2cm; width: 70px; }
+.fig-flor-fogo { top: 1.2cm; left: 1.2cm; width: 55px; }
+.fig-flor-gelo { top: 1.2cm; left: 1.2cm; width: 55px; }
+.fig-goomba { bottom: 1.2cm; left: 1.5cm; width: 50px; }
+.fig-bowser { bottom: 0.5cm; right: 0.5cm; width: 180px; z-index: 16; }
+.fig-toad { bottom: 1.5cm; left: 1.2cm; width: 65px; }
+.fig-yoshi { bottom: 1.5cm; right: 1.2cm; width: 85px; transform: scaleX(-1); }
+.fig-moedas { bottom: 1.2cm; left: 1.2cm; width: 45px; transform: scaleX(-1); animation: shine 2s infinite; }
+
+.page.cover {
+  background-image: url('../../assets/img/capa.png');
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  padding: 3cm 1cm;
+}
+
+.cover-box {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-text-container {
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+  white-space: nowrap;
+}
+
+.cover-subtitle {
+  color: #fff;
+  text-shadow: 4px 4px 0 #000;
+  font-size: 20px;
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.golden-text {
+  background: linear-gradient(180deg, #ffeaa7 0%, #fdcb6e 50%, #e17055 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fdcb6e;
+  text-shadow: 2px 2px 0px #fff;
+}
+
+.cover-author-badge {
+  background: rgba(0,0,0,0.8);
+  padding: 8px 20px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+  font-family: 'VT323', monospace;
+}
+
+.cover-author-main { font-size: 18px; }
+.cover-author-footer { font-size: 16px; }
+
+.cover-footer-container {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.book-index {
+  list-style: none;
+  margin-top: 1cm;
+  padding-left: 0;
+  font-family: 'Press Start 2P', cursive;
+  width: 100%;
+}
+
+.book-index li {
+  margin-bottom: 20px;
+  font-size: 10pt;
+  border-bottom: 4px dashed #000;
+  padding-bottom: 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.book-index a { color: #000; text-decoration: none; transition: color 0.2s; }
+.book-index a:hover { color: var(--color-accent-red); }
+
+.index-mario-img {
+  width: 300px;
+  image-rendering: pixelated;
+  margin-top: 80px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boss-list {
+  font-family: 'VT323', monospace;
+  font-size: 18pt;
+  margin-bottom: 0.8cm;
+  padding-left: 1.5cm;
+  color: #eee;
+}
+
+.ref-box {
+  background-color: #fff;
+  color: #000;
+  padding: 1.5cm;
+}
+
+.ref-list {
+  margin-top: 0.5cm;
+  font-family: 'VT323', monospace;
+  font-size: 13pt;
+  text-align: center;
+}
+
+.ref-link-title { font-size: 13pt; }
+.ref-link-desc { font-size: 10pt; }
+
+.end-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  padding-top: 2cm;
+}
+
+.end-img { width: 200px; image-rendering: pixelated; margin-bottom: 20px; }
+.end-title { color: #000; font-size: 24pt; }
+.end-footer-text { 
+  margin-top: 1cm;
+  margin-bottom: 2cm;
+  font-family: 'Press Start 2P', cursive; 
+  font-size: 14pt; 
+  color: #555; 
+  text-align: center; 
+  width: 100%; 
+  line-height: 1.5;
+}
+
+/* ── themes.css ── */
+/* ============================================
+   5. TEMAS POR CAPITULO & UTILIDADES
+   ============================================ */
+
+.theme-data { background-color: var(--color-data-bg); }
+.theme-data .retro-box { background-color: var(--color-data-bg); }
+.theme-data .retro-box h2 { color: var(--color-data-heading); border-bottom-color: var(--color-data-accent); }
+.theme-data h2 + p::first-letter { color: var(--color-data-accent); }
+.theme-data .highlight { background-color: var(--color-data-accent); color: #000; }
+
+.theme-human { background-color: var(--color-human-bg); }
+.theme-human .retro-box { background-color: var(--color-human-bg); }
+.theme-human .retro-box h2 { color: var(--color-human-heading); border-bottom-color: var(--color-human-accent); }
+.theme-human h2 + p::first-letter { color: var(--color-human-accent); }
+.theme-human .highlight { background-color: var(--color-human-accent); color: #fff; }
+
+.theme-engine { background-color: var(--color-engine-bg); }
+.theme-engine .retro-box { background-color: var(--color-engine-bg); }
+.theme-engine .retro-box h2 { color: var(--color-engine-heading); border-bottom-color: var(--color-engine-accent); }
+.theme-engine h2 + p::first-letter { color: var(--color-engine-accent); }
+.theme-engine .highlight { background-color: var(--color-engine-accent); color: #fff; }
+
+.theme-tokens { background-color: var(--color-tokens-bg); }
+.theme-tokens .retro-box { background-color: var(--color-tokens-bg); }
+.theme-tokens .retro-box h2 { color: var(--color-tokens-heading); border-bottom-color: var(--color-tokens-accent); }
+.theme-tokens h2 + p::first-letter { color: var(--color-tokens-accent); }
+.theme-tokens .highlight { background-color: var(--color-tokens-accent); color: #fff; }
+
+.theme-impact { background-color: var(--color-impact-bg); }
+.theme-impact .retro-box { background-color: var(--color-impact-bg); }
+.theme-impact .retro-box h2 { color: var(--color-impact-heading); border-bottom-color: var(--color-impact-accent); }
+.theme-impact h2 + p::first-letter { color: var(--color-impact-accent); }
+.theme-impact .highlight { background-color: var(--color-impact-accent); color: #fff; }
+
+.theme-archive { background-color: #e5d3b3; }
+.theme-archive .retro-box { background-color: #fdf5e6; }
+.theme-archive .retro-box h2 { color: #8b4513; border-bottom-color: #deb887; }
+.theme-archive h2 + p::first-letter { color: #deb887; }
+
+.theme-victory { background-color: var(--color-victory-bg); }
+.theme-victory .retro-box { background-color: var(--color-victory-bg); }
+.theme-victory .retro-box h2 { color: var(--color-victory-heading); border-bottom-color: var(--color-victory-accent); }
+.theme-victory h2 + p::first-letter { color: var(--color-victory-accent); }
+
+.theme-vanilla { background-color: #fcfcfc; }
+.theme-vanilla .retro-box { background-color: #fcfcfc; }
+.theme-vanilla .retro-box h2 { color: #000; border-bottom-color: #000; }
+
+.boss-box { background-color: var(--color-boss-bg); color: #fff; border-color: var(--color-boss-heading); }
+.boss-box h2 { color: var(--color-boss-heading); border-bottom-color: var(--color-boss-heading); }
+.boss-box p { color: #eee; }
+.boss-box h2 + p::first-letter { color: var(--color-boss-accent); text-shadow: 3px 3px 0px #000; }
+.boss-box .highlight { background-color: var(--color-boss-accent); color: #000; }
+
+.block-content-text { margin-bottom: 0; font-size: 14pt; }
+
+.theme-green-block { background-color: #2ecc71; border-color: #000; }
+.theme-blue-block { background-color: #3498db; color: #fff; }
+.theme-orange-block { background-color: #f39c12; }
+.theme-purple-block { background-color: #9b59b6; color: #fff; }
+.theme-red-block { background-color: #c0392b; }
+
+.bonus-list { font-family: 'VT323', monospace; font-size: 16pt; margin-bottom: 0.5cm; padding-left: 1.5cm; }
+.bonus-sublist { font-family: 'VT323', monospace; font-size: 14pt; margin-top: 10px; padding-left: 1cm; list-style: circle; }
+
+.bonus-highlight-green { color: #2ecc71; }
+.bonus-highlight-blue { color: #3498db; }
+.bonus-highlight-yellow { color: #f1c40f; }
+.bonus-highlight-red { color: #e74c3c; }
+
+.bonus-q-block { background-color: #273c75; color: #fff; border-color: #fbc531; }
+
+/* ── animations.css ── */
+/* ============================================
+   6. ANIMACOES
+   ============================================ */
+
+
+
+
+
+
+
+
+
+/* ── print.css ── */
+/* ============================================
+   7. PRINT / PDF
+   ============================================ */
+
+#btn-pdf {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-accent-red);
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10pt;
+  padding: 15px;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+#btn-pdf:hover {
+  transform: scale(1.05);
+}
+
+@media print {
+    
+
+    /* Esconde elementos funcionais do tema */
+    #pipe-container, #btn-pdf { 
+        display: none !important; 
+    }
+
+    /* Reset do body */
+    body { 
+        padding: 0; 
+        margin: 0;
+        display: block; 
+    }
+
+    /* Main sem gaps */
+    main { 
+        padding: 0; 
+        gap: 0; 
+        display: block; 
+    }
+
+    /* Cada .page = exatamente 1 folha A4 */
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 1cm;
+        box-shadow: none !important;
+        /* Mantém os tijolinhos no PDF */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Otimização de espaço para conteúdo não quebrar a página */
+    p { font-size: 14pt !important; line-height: 1.2 !important; margin-bottom: 0.5cm !important; }
+    h2 { font-size: 11pt !important; margin-bottom: 0.8cm !important; padding-bottom: 5px !important; }
+    h2 + p::first-letter { font-size: 24pt !important; margin-right: 6px !important; }
+    .highlight { font-size: 14pt !important; padding: 0 4px !important; }
+    .block-content-text { font-size: 11pt !important; }
+    .q-block, .powerup-block { padding: 10px !important; margin-bottom: 0.5cm !important; }
+    .fonte-box { padding-top: 10px !important; margin-bottom: -15px !important; }
+    .book-index li { font-size: 10pt !important; margin-bottom: 20px !important; padding-bottom: 10px !important; }
+    .index-mario-img { width: 250px !important; margin-top: 50px !important; }
+    .end-box { padding-top: 2cm !important; }
+    .end-img { width: 160px !important; margin-bottom: 10px !important; }
+    .end-footer-text { margin-bottom: 2cm !important; font-size: 14pt !important; }
+    .bonus-list li { font-size: 12pt !important; margin-bottom: 5px !important; }
+    .ref-link-desc { font-size: 10pt !important; }
+    .ref-link-title { font-size: 11pt !important; }
+    .retro-box { padding: 1.5cm 1.5cm !important; }
+
+    /* Rodapé de página */
+    footer {
+        margin-top: auto !important;
+        width: 100% !important;
+    }
+
+    .end-box footer {
+        margin-top: 1cm !important;
+    }
+
+    .footer-page { 
+        color: #333 !important; 
+        text-shadow: none !important; 
+        margin-bottom: 25px !important;
+        position: static !important;
+    }
+
+    .retro-box, .cover-box, .boss-box,
+    .powerup-block, .q-block, .highlight,
+    .theme-data, .theme-human, .theme-engine,
+    .theme-tokens, .theme-impact, .theme-archive,
+    .theme-victory, .theme-vanilla,
+    .cover-author-badge, .bonus-q-block,
+    .theme-green-block, .theme-blue-block,
+    .theme-orange-block, .theme-purple-block,
+    .theme-red-block, .ref-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .golden-text {
+        font-size: 8.5pt !important;
+    }
+
+    .cover-footer-container {
+        bottom: -40px !important;
+    }
+}
+
+                }
+
+                /* O `body` do e-book (VT323, texto #333) não existe dentro do
+                   relatório; sem isto o miolo das folhas herdaria Arial e preto. */
+                .page.peca-a {
+                    font-family: 'VT323', monospace;
+                    color: #333;
+                }
+
+                @media screen {
+                    .anexo > .page { margin-bottom: 30px; }
+                }
+            }
+        }
+    </style>
+    <!-- Tipografia da peça (Anexo A). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="page" id="capa" aria-label="Capa do Trabalho">
+        <header>
+            <img src="assets/Logo UNIP.png" alt="Logo da Universidade Paulista" class="logo-unip" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/UNIP_Logo.svg/1200px-UNIP_Logo.svg.png'">
+            <div class="capa-header uppercase">
+                UNIVERSIDADE PAULISTA<br>
+                ICET - INSTITUTO DE CIÊNCIAS EXATAS E TECNOLOGIA<br>
+                CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS<br><br><br>
+                EXTENSÃO UNIVERSITÁRIA<br><br><br>
+                RELATÓRIO DE ATIVIDADE DE EXTENSÃO — EBOOK<br>
+                <span style="text-transform: none;">(Super IA World: Curiosidades da IA)</span><br>
+                <span style="text-transform: none;">Carga horária: 50 horas</span>
+            </div>
+        </header>
+
+        <table class="table-capa" aria-label="Tabela de Autores">
+            <tr><th width="70%">Nome</th><th width="30%">R.A</th></tr>
+            <tr>
+                <td>Maycon Douglas Inácio Silva</td>
+                <td>H719CD3</td>
+            </tr>
+        </table>
+
+        <footer class="capa-footer uppercase">
+            São José dos Campos - SP<br><span class="pendente">Maio / 2026 — confirmar</span>
+        </footer>
+    </section>
+
+    <section class="page" id="sumario">
+        <h2>Sumário</h2>
+
+        <div class="sumario-item">
+            <a href="#dados-cadastro">1. Dados de Cadastro</a>
+            <div class="sumario-dots"></div>
+            <span>3</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#descricao-1">2. Descrição da Atividade</a>
+            <div class="sumario-dots"></div>
+            <span>4</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#conclusao">3. Conclusão e Resultados Alcançados</a>
+            <div class="sumario-dots"></div>
+            <span>8</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#comprovacao">4. Comprovação</a>
+            <div class="sumario-dots"></div>
+            <span>10</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#anexo-a">Anexo A &ndash; E-book &quot;Super IA World&quot; na íntegra</a>
+            <div class="sumario-dots"></div>
+            <span>12</span>
+        </div>
+    </section>
+
+    <section class="page" id="dados-cadastro">
+        <div class="page-number">3</div>
+        <h2>1. Dados de Cadastro</h2>
+
+        <h3>Campus</h3>
+        <p>Campus SJC Dutra - São José dos Campos (SP)</p>
+
+        <h3>Alunos Participantes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>R.A.</th>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>H719CD3</td>
+                    <td>Maycon Douglas Inácio Silva</td>
+                    <td>Análise e Desenvolvimento de Sistemas</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="no-indent"><em>Turma: DS3A48</em></p>
+        <p class="no-indent"><em>Atividade realizada individualmente, abrangendo pesquisa, redação, design e desenvolvimento da obra.</em></p>
+
+        <h3>Período</h3>
+        <p>Ano: 2026 | Semestre: 3º</p>
+
+        <h3>Área Temática e Projeto</h3>
+        <p>TRABALHO, ECONOMIA E ADMINISTRAÇÃO &middot; Programas e projetos desenvolvidos para a comunidade.</p>
+
+        <h3>Ação</h3>
+        <p>Ebook (50 horas)</p>
+
+        <h3>Organização Parceira e Público Beneficiário</h3>
+        <table class="table-dados">
+            <tr><td>Organização Parceira</td><td><span class="pendente">informar a escola, biblioteca, curso técnico ou coletivo atendido</span></td></tr>
+            <tr><td>Público Beneficiário</td><td>Estudantes e comunidade externa interessados em Inteligência Artificial</td></tr>
+        </table>
+    </section>
+
+    <section class="page" id="descricao-1">
+        <div class="page-number">4</div>
+        <h2>2. Descrição da Atividade</h2>
+        <h3>2.1 Descrição Geral da Atividade</h3>
+        <p>A presente atividade de extensão universitária consistiu na pesquisa, redação,
+        design e desenvolvimento do e-book <strong>&quot;Super IA World: Curiosidades da
+        IA&quot;</strong>, obra digital gratuita de 10 folhas em formato A4, com cerca de
+        1.600 palavras, que apresenta curiosidades sobre Inteligência Artificial usando a
+        estética retrô de 16 bits inspirada em <em>Super Mario World</em>.</p>
+
+        <p>A obra aproxima o público não especialista de conceitos técnicos da área —
+        dados de treinamento, alinhamento de modelos, arquitetura Transformer, tokens,
+        janelas de contexto e interpretabilidade — usando a linguagem visual de um jogo
+        clássico como ponto de entrada. Cada capítulo é apresentado como uma fase, com
+        blocos de destaque em forma de curiosidade, dica e <em>power-up</em>, e encerra com a
+        fonte utilizada. O conteúdo foi atualizado para maio de 2026.</p>
+
+        <h4>Estrutura do conteúdo</h4>
+        <p>A obra é organizada em capítulos temáticos, antecedidos por capa e índice e
+        seguidos de uma folha final, conforme apresentado no Quadro 1.</p>
+    </section>
+
+    <section class="page" id="descricao-2">
+        <div class="page-number">5</div>
+        <h2>2. Descrição da Atividade (continuação)</h2>
+        <p class="figure-title">Quadro 1 – Capítulos do e-book e conceitos de Inteligência Artificial tratados</p>
+        <table class="table-conteudo">
+            <thead>
+                <tr><th>Capítulo</th><th>Conceitos tratados</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Mundo 1-1 — O Apetite por Dados</td><td>Volume de dados de treinamento, leis de escala, dados curados, dados sintéticos e colapso de modelo</td></tr>
+                <tr><td>Mundo 1-2 — O Fator Humano</td><td>RLHF, IA Constitucional, DPO, cadeia de raciocínio (<em>Chain of Thought</em>) e <em>Red Teaming</em></td></tr>
+                <tr><td>Mundo 1-3 — O Motor Transformer</td><td>Mecanismo de atenção, <em>self-attention</em>, sistemas agênticos, modelos abertos e <em>Mixture of Experts</em></td></tr>
+                <tr><td>Mundo 1-4 — Tokens e Contexto</td><td>Tokens e espaço vetorial, teste <em>needle in a haystack</em>, janelas de contexto, RAG e <em>context caching</em></td></tr>
+                <tr><td>Fase do Chefão — A Caixa Preta</td><td>Habilidades emergentes, interpretabilidade mecanística, <em>Sparse Autoencoders</em> e alucinações</td></tr>
+                <tr><td>Bônus — A Fusão: IA + Impacto Humano</td><td>Hiper-personalização, design centrado na dor e agência</td></tr>
+                <tr><td>Mundo Especial — Referências</td><td>Nove artigos e marcos da área, com link</td></tr>
+            </tbody>
+        </table>
+        <p class="caption">Fonte: Elaborado pelo autor (2026).</p>
+    </section>
+
+    <section class="page" id="descricao-3">
+        <div class="page-number">6</div>
+        <h2>2. Descrição da Atividade (continuação)</h2>
+        <h4>Desenvolvimento técnico</h4>
+        <p>A peça foi construída como aplicação web estática, sem framework e sem
+        bibliotecas de terceiros.</p>
+        <ul>
+            <li><strong>HTML5 semântico:</strong> 311 linhas, estruturadas com
+            <code>main</code>, <code>article</code>, <code>nav</code>, <code>aside</code> e
+            <code>footer</code>, com rótulos de acessibilidade nas folhas e título da capa
+            acessível a leitores de tela.</li>
+            <li><strong>CSS modular em arquitetura SMACSS:</strong> 728 linhas em 9 arquivos,
+            sendo sete módulos separados por responsabilidade (variáveis, base, layout,
+            componentes, temas, animações e impressão), o arquivo central de importação e o
+            do cenário de fundo.</li>
+            <li><strong>JavaScript sem bibliotecas:</strong> 73 linhas organizadas em funções
+            de responsabilidade única, incluindo o botão de exportação para PDF.</li>
+            <li><strong>Ilustração:</strong> 28 imagens PNG — personagens, blocos e elementos
+            de cenário da estética 16 bits —, com tratamento de imagem e composição
+            realizados no Canva.</li>
+            <li><strong>Temas por capítulo:</strong> cada fase recebe uma paleta de cor própria,
+            aplicada por classes de tema.</li>
+        </ul>
+
+        <h4>Impressão</h4>
+        <p>A obra reproduz o formato A4 exato por meio de regras de impressão
+        (<code>@media print</code>), preservando as imagens e as cores de fundo na
+        exportação para PDF, o que permite distribuir a versão impressa com a mesma
+        diagramação da digital.</p>
+    </section>
+
+    <section class="page" id="participacao">
+        <div class="page-number">7</div>
+        <h2>2.2 Descrição da Participação de Cada Aluno</h2>
+        <h4>Maycon Douglas Inácio Silva (R.A. H719CD3)</h4>
+        <p>Atuou em <strong>todas as etapas da obra: pesquisa, redação, design e
+        desenvolvimento</strong>, aplicando conhecimentos das disciplinas de <em>Programação
+        Web</em>, <em>Engenharia de Software</em> e <em>Interface Homem-Computador</em>. Foi
+        responsável por pesquisar e selecionar os conteúdos e as nove referências sobre
+        Inteligência Artificial, redigir os capítulos em linguagem acessível, compor a
+        identidade visual de 16 bits com tratamento das imagens no Canva, estruturar o CSS em
+        arquitetura modular e codificar o suporte a impressão em A4 — reproduzido na íntegra
+        no Anexo A deste relatório.</p>
+    </section>
+
+    <section class="page" id="conclusao">
+        <div class="page-number">8</div>
+        <h2>3. Conclusão e Resultados Alcançados</h2>
+        <p>A atividade entregou à comunidade uma obra introdutória e gratuita sobre
+        Inteligência Artificial, que usa a linguagem visual de um jogo clássico para tornar
+        acessíveis conceitos técnicos da área, disponível em formato digital e em versão para
+        impressão em A4.</p>
+
+        <p>A atividade atendeu diretamente <span class="pendente">informar o número de pessoas atendidas presencialmente e onde</span>.</p>
+
+        <p class="no-indent">Resultados objetivos e verificáveis:</p>
+        <ul>
+            <li><strong>7 capítulos em 10 folhas A4</strong>, com capa, índice e folha final.</li>
+            <li><strong>Nove referências</strong> com link direto para os artigos e marcos citados.</li>
+            <li><strong>Versão para impressão A4</strong> fiel à versão digital.</li>
+            <li><strong>Código-fonte aberto</strong> em repositório público, com histórico de versões.</li>
+        </ul>
+
+        <p class="no-indent">A atividade está alinhada aos seguintes <strong>Objetivos de
+        Desenvolvimento Sustentável (ODS) da ONU</strong>:</p>
+        <ul>
+            <li><strong>ODS 4 (Educação de Qualidade):</strong> material didático gratuito sobre Inteligência Artificial em linguagem acessível.</li>
+            <li><strong>ODS 9 (Indústria, Inovação e Infraestrutura):</strong> divulgação de conceitos centrais da inovação tecnológica recente.</li>
+            <li><strong>ODS 10 (Redução das Desigualdades):</strong> acesso gratuito e código aberto, reutilizável por terceiros.</li>
+        </ul>
+    </section>
+
+    <section class="page" id="conclusao-2">
+        <div class="page-number">9</div>
+        <h2>3. Conclusão e Resultados Alcançados (continuação)</h2>
+
+        <h3>3.1 Local onde a atividade foi realizada</h3>
+        <p>A obra foi desenvolvida pelo aluno e disponibilizada em repositório público.
+        <span class="pendente">Informar o local e a data da apresentação ou distribuição presencial — as Orientações da UNIP (p. 6) exigem que a atividade seja realizada presencialmente.</span></p>
+
+        <h3>3.2 Considerações Finais</h3>
+        <ul>
+            <li><strong>Dificuldades enfrentadas:</strong> a principal foi garantir que a
+            exportação para PDF fosse fiel à versão digital — dimensões A4 rigorosas, imagens de
+            fundo preservadas na impressão e tipografia ajustada à folha —, o que exigiu
+            sucessivas correções registradas no histórico do projeto.</li>
+            <li><strong>Sugestões:</strong> como a área de Inteligência Artificial evolui
+            rapidamente, recomenda-se revisar periodicamente os capítulos que citam modelos e
+            técnicas recentes.</li>
+            <li><strong>Observações:</strong> o conteúdo da obra reflete o estado da área em
+            maio de 2026, data da última atualização.</li>
+        </ul>
+    </section>
+
+    <section class="page" id="comprovacao">
+        <div class="page-number">10</div>
+        <h2>4. Comprovação</h2>
+        <p>A comprovação da atividade fundamenta-se na própria peça produzida, reproduzida na
+        íntegra no <strong>Anexo A</strong> a partir da folha 12, no repositório público
+        da obra e nas capturas apresentadas a seguir.</p>
+        <p class="no-indent">O anexo reproduz a peça como ela é distribuída — mesma diagramação,
+        mesmo formato de impressão. Por isso as folhas do anexo não recebem o número de página do
+        relatório, que cairia sobre a arte; o sumário anuncia onde o anexo começa. Imprimir apenas
+        o intervalo do anexo devolve a peça pronta para uso.</p>
+
+        <h3>Comprovação 1 — Capa e índice do e-book</h3>
+        <p class="figure-title">Figura 1 – Capa e Mapa do Mundo (índice) do e-book &quot;Super IA World&quot;</p>
+        <div class="image-container">
+            <img src="assets/1.png" alt="Capa e índice do e-book Super IA World" class="dynamic-img"
+                 title="Clique para trocar a imagem (JPG, PNG, WEBP)">
+            <p class="caption">Fonte: Acervo do autor (2026) — reprodução da peça produzida na atividade.</p>
+        </div>
+    </section>
+
+    <section class="page" id="comprovacao-2">
+        <div class="page-number">11</div>
+        <h2>4. Comprovação (continuação)</h2>
+
+        <h3>Comprovação 2 — Visão geral das 10 folhas</h3>
+        <p class="figure-title">Figura 2 – As 10 folhas do e-book, cada capítulo com seu tema de cor</p>
+        <div class="image-container">
+            <img src="assets/2.png" alt="Miniaturas das 10 folhas do e-book" class="dynamic-img"
+                 title="Clique para trocar a imagem (JPG, PNG, WEBP)">
+            <p class="caption">Fonte: Acervo do autor (2026) — reprodução da peça produzida na atividade.</p>
+        </div>
+
+        <h3>Demais evidências</h3>
+        <ul>
+            <li><strong>Código-fonte com histórico de versões:</strong> github.com/MayconDIS/E-book-Super_IA_World</li>
+            <li><strong>Registro da ação presencial:</strong> <span class="pendente">anexar lista de presença e registro fotográfico</span></li>
+            <li><strong>Carta de Apresentação institucional:</strong> <span class="pendente">anexar, se a atividade foi realizada junto a organização parceira</span></li>
+        </ul>
+    </section>
+
+
+    <!-- ═════════════ ANEXO A — O E-BOOK NA ÍNTEGRA ═════════════
+         Folhas 12 a 21. Reproduzem a peça como ela é distribuída, e por
+         isso NÃO levam o número de página do relatório: ele cairia sobre a arte.
+         O sumário anuncia onde o anexo começa. -->
+    <div class="anexo anexo-a" id="anexo-a">
+<article class="page peca-a cover" aria-labelledby="title-1">
+            <div class="retro-box cover-box">
+                <div class="cover-text-container">
+                    <h1 class="sr-only">Super IA World - Curiosidades da IA</h1>
+                    <p id="title-1" class="cover-subtitle">&#9658; CURIOSIDADES DA IA</p>
+                    <div class="cover-author-badge cover-author-main">PLAYER: Entusiasta de Tecnologia</div>
+                </div>
+                <div class="cover-footer-container">
+                    <!-- Inline style mantido pois remove a animação de uma classe global de utilidade -->
+                    <p class="cover-subtitle golden-text" style="font-size: 12px; animation: none;">O CONHECIMENTO LIBERTA</p>
+                    <div class="cover-author-badge cover-author-footer">Autor: Maycon Douglas</div>
+                </div>
+            </div>
+        </article>
+
+<article class="page peca-a theme-vanilla" aria-labelledby="index-title">
+            <div class="retro-box">
+                <nav aria-labelledby="index-title">
+                    <h2 id="index-title">MAPA DO MUNDO</h2>
+                    <ul class="book-index">
+                        <li><a href="#chapter-1">Mundo 1-1: O Apetite por Dados</a></li>
+                        <li><a href="#chapter-2">Mundo 1-2: O Fator Humano</a></li>
+                        <li><a href="#chapter-3">Mundo 1-3: O Motor Transformer</a></li>
+                        <li><a href="#chapter-4">Mundo 1-4: Tokens e Contexto</a></li>
+                        <li><a href="#chapter-5">Fase do Chefão: A Caixa Preta</a></li>
+                        <li><a href="#chapter-power-3">Bônus: A Fusão: IA + Impacto Humano</a></li>
+                        <li><a href="#chapter-6">Mundo Especial: Referências</a></li>
+                    </ul>
+                </nav>
+                <img src="../../assets/img/Mario e Yoshi.png" alt="Personagens Mario e Yoshi" class="index-mario-img">
+            </div>
+        </article>
+
+<article class="page peca-a theme-data" aria-labelledby="chapter-1">
+            <div class="retro-box">
+                <h2 id="chapter-1">Mundo 1-1: O Apetite por Dados</h2>
+                <p>Você sabia que o <strong>GPT-5.5</strong> da OpenAI leu mais textos do que todos os seres humanos que já existiram — combinados? Ele devorou <span class="highlight">15+ trilhões de tokens</span>. Mas o segredo não é apenas o volume, são as <strong>Leis de Escala (Scaling Laws)</strong> <em>(Kaplan et al., 2020)</em>: quanto mais poder de computação e dados de qualidade, mais "inteligência" emerge.</p>
+                
+                <aside class="q-block">
+                    <!-- Inline style extraído se possível, mas aqui funciona como utilitário flutuante local -->
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de curiosidade" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>CURIOSIDADE:</strong> Os modelos agora usam <em>"Curated Data"</em>. Em vez de lerem toda a internet (incluindo lixo digital), eles focam em raciocínio lógico, livros técnicos e código de alta qualidade.</p>
+                </aside>
+
+                <p>Mas aqui está o desafio de 2026: <strong>os dados públicos acabaram</strong>. A solução? IAs agora geram <span class="highlight">dados sintéticos</span> — textos de altíssimo nível criados por modelos menores para treinar os gigantes. É o ciclo da auto-evolução.</p>
+                
+                <aside class="powerup-block theme-green-block">
+                    <img src="../../assets/figures/estrela.png" alt="Ícone de estrela" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>ITEM SECRETO: Model Collapse</strong> — Se uma IA for treinada apenas com dados de outras IAs, ela começa a esquecer fatos raros e a cometer erros bizarros. O toque humano ainda é o "filtro de realidade" indispensável.</p>
+                </aside>
+
+                <p>Para contornar o chamado <em>"Data Wall"</em> (a barreira da falta de dados), os laboratórios de IA estão investindo bilhões em otimização de algoritmos e exploração de novos domínios físicos. Afinal, a qualidade e a diversidade da "dieta" de uma máquina definem diretamente o seu teto de raciocínio lógico no mundo real.</p>
+                <p>Se os dados são o combustível, como garantimos que a IA não aprenda comportamentos tóxicos? A resposta está no toque humano...</p>
+                <footer>
+                    <span class="footer-page">01</span>
+                    <div class="fonte-box">Fonte: OpenAI & Google DeepMind (Data Trends 2025-2026).</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a theme-human" aria-labelledby="chapter-2">
+            <div class="retro-box">
+                <h2 id="chapter-2">Mundo 1-2: O Fator Humano</h2>
+                <p>Cada clique seu em um "CAPTCHA" treinou uma IA. Mas para modelos de linguagem, a base do alinhamento ético moderno — que evoluiria para a IA Constitucional <em>(Bai et al., 2022)</em> — é o <strong>RLHF</strong> (Aprendizado por Reforço com Feedback Humano). Humanos classificam respostas, ensinando à máquina o que é útil, honesto e inofensivo.</p>
+                
+                <aside class="powerup-block">
+                    <p class="block-content-text"><strong>POWER-UP: DPO</strong> — Em 2026, o <em>Direct Preference Optimization</em> substituiu o RLHF complexo, permitindo que a IA aprenda preferências humanas diretamente matematicamente, sem precisar de um "modelo de recompensa" separado.</p>
+                </aside>
+
+                <p>A <strong>Anthropic</strong> elevou o nível com a <span class="highlight">IA Constitucional</span>. O Claude Opus 4.7 segue uma lista de princípios (uma "Constituição") para se auto-corrigir. Isso reduz a dependência de milhares de anotadores humanos e torna a IA mais consistente eticamente.</p>
+                
+                <aside class="q-block theme-blue-block">
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de dica" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>DICA DO PLAYER: Chain of Thought</strong> — Quer que a IA resolva problemas complexos? Peça para ela "pensar passo a passo". Isso ativa neurônios de raciocínio sequencial que seriam ignorados em respostas diretas.</p>
+                </aside>
+
+                <p>Antes de uma Super IA ser lançada ao público, ela enfrenta o rigoroso <strong>Red Teaming</strong>. Equipes formadas por hackers éticos, sociólogos e especialistas em segurança tentam ativamente "quebrar" as barreiras da máquina, garantindo que ela resista a ataques de jailbreak e não propague desinformação.</p>
+                <p>Mas como a IA processa e compreende profundamente esses princípios éticos e lógicos? O segredo está no motor que revolucionou tudo em 2017...</p>
+                <footer>
+                    <span class="footer-page">02</span>
+                    <div class="fonte-box">Fonte: Bai et al., "Constitutional AI: Harmless Opera" (2022).</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a theme-engine" aria-labelledby="chapter-3">
+            <div class="retro-box">
+                <h2 id="chapter-3">Mundo 1-3: O Motor Transformer</h2>
+                <p>Em 2017, o Google lançou o artigo revolucionário <em>"Attention Is All You Need"</em> <em>(Vaswani et al., 2017)</em>. A grande inovação foi o mecanismo de <strong>Atenção</strong>: a capacidade da IA de focar em palavras específicas de uma frase para entender o sentido, ignorando o ruído.</p>
+                <p>Antes, as IAs esqueciam o início da frase ao chegar no fim. O Transformer olha para <strong>todos os tokens simultaneamente</strong> usando <span class="highlight">Self-Attention</span>, permitindo um processamento massivamente paralelo e veloz.</p>
+                
+                <aside class="q-block">
+                    <p class="block-content-text"><strong>SISTEMA AGÊNTICO:</strong> Em 2026, não falamos mais apenas de "Chat". Os modelos são Agentes que usam o Transformer para planejar e executar ações em ferramentas externas (como seu navegador ou terminal).</p>
+                </aside>
+
+                <p>O <strong>Gemini 3.1 Pro</strong> e o <strong>Claude 4.7</strong> são <em>Multimodais Nativos</em>: eles "vêem" e "ouvem" usando a mesma estrutura de Transformer. Mas quanto eles conseguem "lembrar" de uma vez só?</p>
+                
+                <aside class="powerup-block theme-orange-block">
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de bônus" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>POWER-UP: Open Source</strong> — Em 2026, modelos como <strong>Llama 4</strong> e <strong>Gemma 4</strong> alcançaram o nível do GPT-5, permitindo que qualquer desenvolvedor rode uma Super IA em seu próprio hardware.</p>
+                </aside>
+                
+                <p>Outra evolução colossal desse motor é a arquitetura <strong>MoE (Mixture of Experts)</strong>. Em vez de ativar todos os seus trilhões de parâmetros para responder a um simples "olá", a IA roteia a sua pergunta apenas para o grupo de "especialistas" internos adequados, explodindo a velocidade de inferência e poupando energia.</p>
+                
+                <footer>
+                    <span class="footer-page">03</span>
+                    <div class="fonte-box">Fonte: Vaswani et al., "Attention Is All You Need" (2017).</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a theme-tokens" aria-labelledby="chapter-4">
+            <div class="retro-box">
+                <h2 id="chapter-4">Mundo 1-4: Tokens e Contexto</h2>
+                <p>A IA quebra o texto em <span class="highlight">Tokens</span> (pedaços de palavras). Um token é como uma coordenada em um mapa matemático de 1.536 dimensões. Palavras com sentidos próximos ficam "perto" uma da outra nesse espaço vetorial, permitindo que a máquina raciocine sobre volumes massivos de dados <em>(Gemini 1.5 Report)</em>.</p>
+                
+                <aside class="powerup-block">
+                    <p class="block-content-text"><strong>NEEDLE IN A HAYSTACK:</strong> O teste definitivo de 2026. Colocamos uma informação aleatória no meio de 1 milhão de tokens. Se a IA a encontra, sua "atenção" é perfeita. Gemini e Claude agora gabaritam esse teste.</p>
+                </aside>
+
+                <p>Com janelas de contexto de <strong>2 milhões de tokens</strong>, você pode dar à IA o código inteiro de um sistema operacional ou 20 livros de uma vez. Ela não apenas lê, ela <strong>raciocina</strong> sobre toda essa base de conhecimento instantaneamente.</p>
+                
+                <aside class="q-block theme-purple-block">
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de estratégia" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>ESTRATÉGIA: RAG</strong> — Mesmo com janelas gigantes, o <em>Retrieval-Augmented Generation</em> ainda é usado para buscar dados em tempo real na web, garantindo que a IA nunca fique desatualizada.</p>
+                </aside>
+
+                <p>Para processar essa verdadeira montanha de informações sem derreter os servidores, a tecnologia de <strong>Context Caching</strong> entrou em cena. Agora, a IA consegue "congelar" e reutilizar arquivos lidos anteriormente, permitindo que você converse com dezenas de PDFs complexos sem qualquer atraso de processamento.</p>
+                
+                <p>Mas mesmo com memórias fotográficas e bibliotecas infinitas, a forma como a IA toma decisões criativas e emerge habilidades inéditas ainda é um mistério matemático...</p>
+                <footer>
+                    <span class="footer-page">04</span>
+                    <div class="fonte-box">Fonte: Benchmarks de Janelas de Contexto (Gemini 3.1/Claude 4.7).</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a" aria-labelledby="chapter-5">
+            <div class="retro-box boss-box">
+                <h2 id="chapter-5">Fase do Chefão: A Caixa Preta</h2>
+                <p>Modelos como <strong>GPT-5.5</strong> desenvolvem "Habilidades Emergentes" que não foram programadas. O problema? Eles são uma <strong>Caixa Preta</strong>. Sabemos o que entra e o que sai, mas o "porquê" interno é um labirinto complexo de bilhões de neurônios artificiais <em>(Anthropic, 2024)</em>.</p>
+                <p>Para resolver isso, a Anthropic usa <strong>Sparse Autoencoders (SAEs)</strong>. Em 2024, eles conseguiram decompor os milhões de neurônios em "características" (features) compreensíveis.</p>
+                
+                <ul class="boss-list">
+                    <li>🔬 <strong>Mapeamento de Conceitos:</strong> Identificaram o grupo de neurônios que ativa apenas para "Engenharia Genética" ou "Mentira".</li>
+                    <li>🌉 <strong>Intervenção Direta:</strong> Ao "pinçar" esses neurônios, podemos forçar a IA a falar apenas de um assunto ou mudar seu tom.</li>
+                </ul>
+                
+                <p>Dominar a <strong>Interpretabilidade Mecanística</strong> é o segredo para criar Superinteligências Seguras (ASI). Em 2026, estamos finalmente aprendendo a ler os pensamentos da máquina.</p>
+                
+                <aside class="powerup-block theme-red-block">
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de alerta" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>ALERTA DE BOSS: Alucinações</strong> — Nunca confie 100%. A IA é uma máquina de probabilidade, não de verdade. Ela pode gerar mentiras que parecem perfeitamente lógicas. Verifique sempre as fontes!</p>
+                </aside>
+                
+                <footer>
+                    <span class="footer-page">05</span>
+                    <div class="fonte-box">Fonte: Anthropic, "Mapping the Mind of a Large Language Model" (2024).</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a theme-impact" aria-labelledby="chapter-power-3">
+            <div class="retro-box">
+                <h2 id="chapter-power-3">Bônus: A Fusão: IA + Impacto Humano</h2>
+                <p>Se a <strong class="highlight">Caixa Preta</strong> é onde a mágica acontece, este bônus é sobre como canalizar essa energia para criar valor real. O verdadeiro poder da IA generativa não é a automação de tarefas, mas a <span class="highlight">Hiper-Personalização em Escala</span> — a capacidade de atender a necessidades humanas profundas com a precisão de um algoritmo.</p>
+                
+                <p>Para transformar bits em impacto, precisamos de três engrenagens trabalhando juntas:</p>
+                
+                <ul class="bonus-list">
+                    <li>🔍 <strong class="bonus-highlight-green">Engenharia de Demanda Satisfeita</strong>: Não se trata de "vender", mas de usar LLMs para minerar dores reais. A IA analisa padrões em fóruns e redes sociais para encontrar lacunas de conhecimento, transformando a "curiosidade" em uma solução específica que as pessoas realmente buscam.</li>
+                    <li>📦 <strong class="bonus-highlight-blue">Ecossistemas de Valor Sintético</strong>: O fim do "produto único". Com a IA, criamos jornadas: um guia rápido (entrada), complementos dinâmicos (estímulo) e agentes especializados (mentoria). O valor não está no texto, mas na <strong>arquitetura da solução</strong>.</li>
+                    <li>🎨 <strong class="bonus-highlight-yellow">Design Centrado na Dor</strong>: A IA permite que o produto se adapte ao usuário, e não o contrário. Exemplos de impacto real:
+                        <ul class="bonus-sublist">
+                            <li><strong>TDAH Infantil</strong>: IAs que ajustam o traço e a complexidade de livros de colorir para reduzir a sobrecarga cognitiva.</li>
+                            <li><strong>Cognição na Terceira Idade</strong>: Estímulos visuais nostálgicos gerados por IA para auxiliar na recuperação de memórias.</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p>O segredo final? O sucesso digital nasce do tripé: <strong class="bonus-highlight-red">Oferta Clara + Criativo de Impacto + Página Simples</strong>. A IA é o motor potente, mas o propósito humano é o volante que define a direção do sucesso.</p>
+                
+                <aside class="q-block bonus-q-block">
+                    <img src="../../assets/figures/bloco-interrogacao.png" alt="Ícone de Master" style="float: left; width: 45px; margin-right: 15px; image-rendering: pixelated; margin-top: -5px;">
+                    <p class="block-content-text"><strong>CONCEITO MASTER: Agência</strong> — O futuro não é o chat, é a agência. IAs que não esperam ordens, mas que buscam proativamente atingir os objetivos que você definiu. O player agora é um Diretor.</p>
+                </aside>
+                
+                <footer>
+                    <span class="footer-page">06</span>
+                    <div class="fonte-box">Fonte: Metodologias de Hiper-Personalização e Design Centrado na Dor.</div>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a" aria-labelledby="chapter-ref">
+            <div class="retro-box ref-box">
+                <h2 id="chapter-6">Mundo Especial: Referências</h2>
+                <p>Quer ir além? Os artigos e marcos abaixo são o <strong>código-fonte</strong> de tudo que você leu neste e-book:</p>
+                
+                <ul class="book-index ref-list">
+                    <li><a href="https://arxiv.org/abs/1706.03762" target="_blank"><strong class="ref-link-title">Attention Is All You Need (2017)</strong></a><br><span class="ref-link-desc">Vaswani et al. O motor de toda IA moderna e do sistema de "Atenção".</span></li>
+                    <li><a href="https://arxiv.org/abs/2001.08361" target="_blank"><strong class="ref-link-title">Scaling Laws for Neural LMs (2020)</strong></a><br><span class="ref-link-desc">Kaplan et al. A prova matemática de que mais dados e computação geram inteligência.</span></li>
+                    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank"><strong class="ref-link-title">Constitutional AI (2022)</strong></a><br><span class="ref-link-desc">Anthropic. Como o Claude se auto-regula com uma "Constituição" ética.</span></li>
+                    <li><a href="https://arxiv.org/abs/2305.18290" target="_blank"><strong class="ref-link-title">Direct Preference Optimization (2023)</strong></a><br><span class="ref-link-desc">Rafailov et al. A técnica que simplificou o alinhamento humano (DPO).</span></li>
+                    <li><a href="https://www.nature.com/articles/s41586-024-07546-0" target="_blank"><strong class="ref-link-title">Model Collapse (Nature 2024)</strong></a><br><span class="ref-link-desc">Shumailov et al. O alerta sobre o uso excessivo de dados sintéticos.</span></li>
+                    <li><a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank"><strong class="ref-link-title">Mapping the Mind of LLMs (2024)</strong></a><br><span class="ref-link-desc">A descoberta dos SAEs para abrir a "Caixa Preta" da inteligência artificial.</span></li>
+                    <li><a href="https://arxiv.org/abs/2005.11401" target="_blank"><strong class="ref-link-title">Retrieval-Augmented Generation (2020)</strong></a><br><span class="ref-link-desc">Lewis et al. A estratégia de conectar a IA a dados externos (RAG).</span></li>
+                    <li><a href="https://arxiv.org/abs/2201.11903" target="_blank"><strong class="ref-link-title">Chain-of-Thought Prompting (2022)</strong></a><br><span class="ref-link-desc">Wei et al. O segredo de pedir para a IA "pensar passo a passo".</span></li>
+                    <li><a href="https://deepmind.google/technologies/gemini/static/pdf/Gemini_1_5_Report.pdf" target="_blank"><strong class="ref-link-title">Multimodal Technical Reports</strong></a><br><span class="ref-link-desc">Benchmarks de janelas de contexto e capacidades multimodais de 2024-2026.</span></li>
+                </ul>
+            </div>
+        </article>
+
+<article class="page peca-a endcover theme-victory" aria-labelledby="title-end">
+            <div class="retro-box end-box">
+                <img src="../../assets/img/star.png" alt="Estrela da Vitória" class="end-img">
+                <h2 id="title-end" class="end-title">FASE COMPLETA!</h2>
+                <p>Você desvendou os segredos da IA.</p>
+                <img src="../../assets/img/mario.png" alt="Personagem Mario Finalizando a Fase" class="end-img">
+                
+                <footer>
+                    <p class="end-footer-text">
+                        PONTUAÇÃO: 99999<br>2026
+                    </p>
+                </footer>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        /* Troca de imagem por clique e fallback para placeholder: anexe as comprovações
+           e imprima na mesma sessão — a troca vive na memória da aba. */
+        const FALLBACK_SVG = 'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450"%3E%3Crect width="800" height="450" fill="%23f4f4f4" stroke="%23999" stroke-width="2" stroke-dasharray="10 6"/%3E%3Ctext x="400" y="210" font-family="Arial" font-size="26" fill="%23666" text-anchor="middle"%3EImagem da comprovação%3C/text%3E%3Ctext x="400" y="252" font-family="Arial" font-size="19" fill="%23888" text-anchor="middle"%3EClique aqui para anexar (JPG, PNG ou WEBP)%3C/text%3E%3C/svg%3E';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.dynamic-img').forEach((img) => {
+                img.addEventListener('error', function () {
+                    if (!this.dataset.hasFallback) {
+                        this.dataset.hasFallback = 'true';
+                        this.src = FALLBACK_SVG;
+                    }
+                });
+
+                const seletor = document.createElement('input');
+                seletor.type = 'file';
+                seletor.accept = 'image/png, image/jpeg, image/jpg, image/webp, image/gif';
+                seletor.style.display = 'none';
+
+                seletor.addEventListener('change', (evento) => {
+                    const arquivo = evento.target.files[0];
+                    if (!arquivo) return;
+                    const leitor = new FileReader();
+                    leitor.onload = (e) => { img.src = e.target.result; };
+                    leitor.readAsDataURL(arquivo);
+                });
+
+                img.addEventListener('click', () => seletor.click());
+                document.body.appendChild(seletor);
+            });
+        });
+    </script>
+</body>
+</html>
