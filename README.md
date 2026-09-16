@@ -45,7 +45,7 @@ O e-book foi projetado com regras rigorosas de `@media print` para garantir fide
 Na versão mais recente, o projeto foi reestruturado seguindo princípios profissionais de Engenharia:
 
 - **Princípios SOLID & Clean Code:** Refatoração orientada ao Princípio da Responsabilidade Única (*Single Responsibility*), garantindo que cada arquivo CSS e cada função JavaScript cuide estritamente de apenas um aspecto da aplicação.
-- **Arquitetura SMACSS:** CSS modularizado e escalável (`variables`, `base`, `layout`, `components`, `themes`, `print`).
+- **Arquitetura SMACSS:** CSS modularizado e escalável (`variables`, `base`, `layout`, `components`, `themes`, `animations`, `print`).
 - **Semântica HTML5:** Uso rigoroso de `<main>`, `<article>`, `<nav>`, `<aside>` e `<footer>` para estruturação hierárquica imaculada.
 - **Acessibilidade e SEO:** Utilização de `aria-labels`, Open Graph / Twitter Cards para previews em redes sociais, e classes `.sr-only` para manter o visual limpo enquanto leitores de tela leem os `<h1/>` corretos.
 - **Isolamento de Estado:** Elementos decorativos do cenário desvinculados do layout do e-book, evitando CSS inline e code smells.
@@ -54,7 +54,7 @@ Na versão mais recente, o projeto foi reestruturado seguindo princípios profis
 ## 📁 Estrutura do Projeto
 
 ```
-📦 Super_IA_World-Ebook
+📦 E-book-Super_IA_World
 ├── 📄 ebook.html          # Conteúdo semântico do e-book (HTML5)
 ├── 📂 assets/
 │   ├── 📂 css/
@@ -64,8 +64,35 @@ Na versão mais recente, o projeto foi reestruturado seguindo princípios profis
 │   ├── 📂 js/
 │   │   └── ⚙️ script.js   # Lógica (Scroll tracking, Event listeners)
 │   ├── 📂 img/            # Imagens chave de layout
-│   └── 📂 figures/        # Sprites 16-bits para o cenário (nuvens, inimigos)
+│   ├── 📂 figures/        # Sprites 16-bits para o cenário (nuvens, inimigos)
+│   └── 📂 pdf/            # Páginas de uma versão anterior em PDF
+├── 📂 Extensão Universitária/
+│   └── 📂 Ebook (50h)/    # Relatório de extensão universitária
+│       ├── 📄 relatorio.html
+│       ├── 📘 RELATORIO.md
+│       ├── ⚙️ gerar_relatorio.py
+│       └── 📂 assets/     # Logo e figuras do relatório
+├── 📂 .agent/             # Skills de agentes de IA usadas no desenvolvimento
+├── 📂 .planning/          # Planejamento e pesquisa das fases do projeto
+├── 🤖 CLAUDE.md           # Guia de arquitetura para o Claude Code
 └── 📘 README.md           # Este arquivo
+```
+
+## 🎓 Relatório de Extensão Universitária
+
+Este e-book foi produzido como atividade de extensão universitária (**Ebook — 50 horas**) do curso de Análise e Desenvolvimento de Sistemas da UNIP. O relatório fica em [`Extensão Universitária/Ebook (50h)/`](Extens%C3%A3o%20Universit%C3%A1ria/Ebook%20%2850h%29/):
+
+- **`relatorio.html`** — relatório no formato ABNT (A4), com o e-book reproduzido na íntegra no Anexo A.
+- **`RELATORIO.md`** — a mesma estrutura em texto, com o resumo para o portal da UNIP.
+- **`gerar_relatorio.py`** — monta o `relatorio.html` a partir do `ebook.html` e dos módulos CSS.
+
+Para gerar o PDF do relatório, abra `relatorio.html` **de dentro do repositório** — as imagens do anexo vêm da pasta `assets/` da raiz —, pressione `Ctrl + P` e ative **"Gráficos de fundo"**.
+
+Se o e-book mudar, gere o relatório de novo em vez de editar o anexo à mão. O script usa como base o modelo de relatório da pasta de extensão do projeto CasalFlow:
+
+```bash
+cd "Extensão Universitária/Ebook (50h)"
+python gerar_relatorio.py
 ```
 
 ## ✨ Features
