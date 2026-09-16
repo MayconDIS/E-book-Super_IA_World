@@ -28,12 +28,12 @@ Este e-book gratuito apresenta curiosidades fascinantes sobre IA usando uma est�
 ### Ler no navegador
 Basta acessar pelo seu navegador web, ou hospedar via GitHub Pages. Para abrir o projeto localmente:
 ```bash
-start index.html
+start ebook.html
 ```
 
 ### Exportar como PDF (Pixel-Perfect)
 O e-book foi projetado com regras rigorosas de `@media print` para garantir fidelidade visual no papel:
-1. Abra `index.html` no Google Chrome ou Edge.
+1. Abra `ebook.html` no Google Chrome ou Edge.
 2. Pressione `Ctrl + P` ou clique no botão flutuante **"BAIXAR PDF"**.
 3. Selecione **"Salvar como PDF"**.
 4. ✅ Ative a opção **"Gráficos de fundo"** (Background graphics).
@@ -55,7 +55,7 @@ Na versão mais recente, o projeto foi reestruturado seguindo princípios profis
 
 ```
 📦 Super_IA_World-Ebook
-├── 📄 index.html          # Conteúdo semântico do e-book (HTML5)
+├── 📄 ebook.html          # Conteúdo semântico do e-book (HTML5)
 ├── 📂 assets/
 │   ├── 📂 css/
 │   │   ├── 🎨 style.css   # Hub central de importação CSS
